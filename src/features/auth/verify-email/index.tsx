@@ -3,7 +3,6 @@
 import { useMemo, type ComponentProps } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { AxiosError } from "axios";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -34,6 +33,7 @@ import { useTranslations } from "@/hooks";
 import { Link, useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores";
 import { type ApiResponse } from "@/types/api";
+import { handleApiError } from "@/utils/api/handle-api-error";
 import { cn } from "@/utils/shadcn";
 
 import { verifyEmailSchema, type VerifyEmailFormValues } from "./schemas";
@@ -69,12 +69,7 @@ export function VerifyEmail({ className, ...props }: ComponentProps<"div">) {
         clearSignupEmail();
         router.push(ROUTE_PATH.auth.signIn);
       },
-      onError: (error: unknown) => {
-        const axiosError = error as AxiosError<ApiResponse>;
-        const message = axiosError.response?.data?.message;
-        const fallbackMessage = axiosError.message || t("auth.verify.err");
-        toast.error(message || fallbackMessage);
-      },
+      onError: (error: Error) => handleApiError(error, t("auth.verify.err")),
     });
   };
 
@@ -104,12 +99,14 @@ export function VerifyEmail({ className, ...props }: ComponentProps<"div">) {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="grid gap-3">
-                      <FormLabel htmlFor="email">{t("field.email")}</FormLabel>
+                      <FormLabel htmlFor="email">
+                        {t("field.auth.email")}
+                      </FormLabel>
                       <FormControl>
                         <Input
                           id="email"
                           type="email"
-                          placeholder={t("field.email_placeholder")}
+                          placeholder={t("field.auth.email_placeholder")}
                           autoComplete="email"
                           required
                           disabled={isPending || !!signupEmail}
@@ -125,7 +122,9 @@ export function VerifyEmail({ className, ...props }: ComponentProps<"div">) {
                   name="otp"
                   render={() => (
                     <FormItem className="grid gap-3">
-                      <FormLabel htmlFor="otp">{t("field.otp_code")}</FormLabel>
+                      <FormLabel htmlFor="otp">
+                        {t("field.auth.otp_code")}
+                      </FormLabel>
                       <FormControl>
                         <Controller
                           control={form.control}

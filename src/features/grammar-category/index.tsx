@@ -79,7 +79,7 @@ export function GrammarCategoryView() {
         toolbarProps={{
           placeholder: isTrashMode
             ? t("common.trash.search_placeholder")
-            : t("grammar_category.search_placeholder"),
+            : t("feature.grammar_category.search_placeholder"),
           searchColumn: COLUMN_KEYS.name,
           search,
           filters: isTrashMode
@@ -87,7 +87,7 @@ export function GrammarCategoryView() {
             : [
                 {
                   columnId: "status",
-                  title: t("field.status"),
+                  title: t("field.common.status"),
                   options: getStatuses(t),
                 },
               ],

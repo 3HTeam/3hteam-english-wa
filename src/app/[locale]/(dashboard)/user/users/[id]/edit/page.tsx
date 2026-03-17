@@ -14,7 +14,7 @@ export default function EditUserPage() {
   return (
     <>
       {/* Mobile view placeholder */}
-      <MobileViewPlaceholder title={t("user.edit_user")} />
+      <MobileViewPlaceholder title={t("feature.user.edit_user")} />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

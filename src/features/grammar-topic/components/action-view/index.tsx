@@ -47,7 +47,7 @@ export function ActionView({
       >
         <Plus className="w-4 h-4" />
         <span className="hidden lg:inline">
-          {t("grammar_topic.add_grammar_topic")}
+          {t("feature.grammar_topic.add_grammar_topic")}
         </span>
       </Button>
     </div>

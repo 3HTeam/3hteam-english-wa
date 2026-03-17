@@ -9,7 +9,9 @@ export default function CategoriesLayout() {
   return (
     <>
       {/* Mobile view placeholder - shows message instead of images */}
-      <MobileViewPlaceholder title={t("grammar_category.grammar_categories")} />
+      <MobileViewPlaceholder
+        title={t("feature.grammar_category.grammar_categories")}
+      />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

@@ -8,6 +8,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { EMPTY } from "@/constants/common";
@@ -20,6 +21,7 @@ interface ModalCustomProps {
   description?: string;
   children: ReactNode;
   footer?: ReactNode;
+  trigger?: ReactNode;
   isLoading?: boolean;
   className?: string;
 }
@@ -31,11 +33,13 @@ export function ModalCustom({
   description = EMPTY.str,
   children,
   footer = null,
+  trigger = null,
   isLoading = false,
   className = EMPTY.str,
 }: ModalCustomProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent
         className={cn(
           "data-[state=open]:!zoom-in-0 data-[state=open]:duration-600 flex flex-col p-0 sm:max-w-[650px] max-h-[80vh]",
@@ -59,9 +63,7 @@ export function ModalCustom({
         </div>
 
         {/* Fixed Footer */}
-        {footer && (
-          <div className="p-4 border-t bg-background">{footer}</div>
-        )}
+        {footer && <div className="p-4 border-t bg-background">{footer}</div>}
       </DialogContent>
     </Dialog>
   );

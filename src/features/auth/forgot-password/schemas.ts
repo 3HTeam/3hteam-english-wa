@@ -7,8 +7,8 @@ export const forgotPasswordSchema = (
     email: z
       .string()
       .trim()
-      .min(1, t("field.email_required"))
-      .email(t("field.email_invalid")),
+      .min(1, t("schema.auth.email_required"))
+      .email(t("schema.auth.email_invalid")),
   });
 
 export type ForgotPasswordFormValues = z.infer<

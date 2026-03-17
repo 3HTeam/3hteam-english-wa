@@ -3,7 +3,6 @@
 import { useEffect, useMemo } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
 import { Loader2, Pencil } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -13,20 +12,12 @@ import {
   useUpdateOnboardingMutation,
 } from "@/apis/hooks";
 import { DialogError } from "@/components/shared/dialog";
+import { ModalCustom } from "@/components/shared/modal-custom";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { EMPTY, MODES } from "@/constants/common";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
-import { TUpdateOnboardingResponse } from "@/types/features";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { onboardingDefaultValues } from "../../common";
 import { getOnboardingSchema, type OnboardingFormValues } from "../../schemas";
@@ -90,17 +81,12 @@ export function EditOnboardingModal({
         },
       },
       {
-        onSuccess: (data: TUpdateOnboardingResponse) => {
+        onSuccess: (data) => {
           toast.success(data?.message || t("common.toast.update_success"));
           onOpenChange?.(false);
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.update_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.update_error")),
       },
     );
   };
@@ -115,62 +101,61 @@ export function EditOnboardingModal({
       <DialogError
         open={controlledOpen}
         onOpenChange={onOpenChange}
-        title={t("onboarding.edit_onboarding")}
+        title={t("feature.onboarding.edit_onboarding")}
         onClose={handleCancel}
       />
     );
   }
 
-  return (
-    <Dialog open={controlledOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="data-[state=open]:!zoom-in-0 data-[state=open]:duration-600 sm:max-w-[650px] max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{t("onboarding.edit_onboarding")}</DialogTitle>
-          <DialogDescription>
-            {t("onboarding.edit_onboarding_desc")}
-          </DialogDescription>
-        </DialogHeader>
-
-        {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <LoadingSpinner />
-          </div>
+  const footer = (
+    <div className="flex justify-end space-x-2">
+      <Button
+        type="button"
+        variant="outline"
+        onClick={handleCancel}
+        className="cursor-pointer"
+      >
+        {t("common.actions.cancel")}
+      </Button>
+      <Button
+        type="submit"
+        form="edit-onboarding-form"
+        className="cursor-pointer min-w-[130px]"
+        disabled={isPending}
+      >
+        {isPending ? (
+          <>
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            {t("common.actions.saving")}
+          </>
         ) : (
-          <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <OnboardingForm form={form} mode={MODES.edit} />
-
-              <div className="flex justify-end space-x-2 pt-4">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleCancel}
-                  className="cursor-pointer"
-                >
-                  {t("common.actions.cancel")}
-                </Button>
-                <Button
-                  type="submit"
-                  className="cursor-pointer min-w-[130px]"
-                  disabled={isPending}
-                >
-                  {isPending ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      {t("common.actions.saving")}
-                    </>
-                  ) : (
-                    <>
-                      <Pencil className="w-4 h-4 mr-2" />
-                      {t("common.actions.update")}
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
-          </Form>
+          <>
+            <Pencil className="w-4 h-4 mr-2" />
+            {t("common.actions.update")}
+          </>
         )}
-      </DialogContent>
-    </Dialog>
+      </Button>
+    </div>
+  );
+
+  return (
+    <ModalCustom
+      open={controlledOpen ?? false}
+      onOpenChange={onOpenChange ?? (() => {})}
+      title={t("feature.onboarding.edit_onboarding")}
+      description={t("feature.onboarding.edit_onboarding_desc")}
+      footer={footer}
+      isLoading={isLoading}
+    >
+      <Form {...form}>
+        <form
+          id="edit-onboarding-form"
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6"
+        >
+          <OnboardingForm form={form} mode={MODES.edit} />
+        </form>
+      </Form>
+    </ModalCustom>
   );
 }

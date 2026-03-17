@@ -1,58 +1,61 @@
 import z from "zod";
+
 import { EMPTY } from "@/constants/common";
 
 const getDefinitionSchema = (t: (key: string) => string) =>
   z.object({
-    definition: z
-      .string()
-      .min(1, t("field.definition_required")),
+    definition: z.string().min(1, t("schema.vocabulary.definition_required")),
     translation: z.string().optional(),
     example: z.string().nullable().optional(),
     exampleTranslation: z.string().nullable().optional(),
   });
 
-const getMeaningSchema = (t: (key: string, params?: Record<string, any>) => string) =>
+const getMeaningSchema = (
+  t: (key: string, params?: Record<string, any>) => string,
+) =>
   z.object({
-    partOfSpeech: z.string().min(1, t("field.part_of_speech_required")),
+    partOfSpeech: z
+      .string()
+      .min(1, t("schema.vocabulary.part_of_speech_required")),
     synonyms: z.array(z.string()).optional(),
     antonyms: z.array(z.string()).optional(),
     definitions: z
       .array(getDefinitionSchema(t))
-      .min(1, t("field.definition_min", { min: 1 })),
+      .min(1, t("schema.vocabulary.definition_min", { min: 1 })),
   });
 
-export const getVocabularySchema = (t: (key: string, params?: Record<string, any>) => string) =>
+export const getVocabularySchema = (
+  t: (key: string, params?: Record<string, any>) => string,
+) =>
   z.object({
-    word: z.string().min(1, t("field.word_required")),
-    translation: z
-      .string()
-      .min(1, t("field.translation_required")),
-    phonetic: z.string().min(1, t("field.phonetic_required")),
+    word: z.string().min(1, t("schema.vocabulary.word_required")),
+    translation: z.string().min(1, t("schema.vocabulary.translation_required")),
+    phonetic: z.string().min(1, t("schema.vocabulary.phonetic_required")),
     status: z.boolean(),
     audioUrlUs: z
       .string()
-      .url(t("field.audio_invalid"))
+      .url(t("schema.vocabulary.audio_invalid"))
       .optional()
       .or(z.literal(EMPTY.str)),
     audioUrlUk: z
       .string()
-      .url(t("field.audio_invalid"))
+      .url(t("schema.vocabulary.audio_invalid"))
       .optional()
       .or(z.literal(EMPTY.str)),
     audioUrlAu: z
       .string()
-      .url(t("field.audio_invalid"))
+      .url(t("schema.vocabulary.audio_invalid"))
       .optional()
       .or(z.literal(EMPTY.str)),
     imageUrl: z
       .string()
-      .url(t("field.image_invalid"))
+      .url(t("schema.common.image_invalid"))
       .optional()
       .or(z.literal(EMPTY.str)),
-    topicId: z.string().min(1, t("field.topic_required")),
+    topicId: z.string().min(1, t("schema.vocabulary.topic_required")),
     meanings: z
       .array(getMeaningSchema(t))
-      .min(1, t("field.meaning_min", { min: 1 })),
+      .min(1, t("schema.vocabulary.meaning_min", { min: 1 })),
   });
 
 export type DefinitionFormValues = z.infer<

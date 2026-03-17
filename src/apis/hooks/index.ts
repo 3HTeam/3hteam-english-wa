@@ -7,7 +7,6 @@ export * from "./user";
 export * from "./setting";
 export * from "./grammar-category";
 export * from "./grammar-topic";
-export * from "./grammar-exercise";
 export * from "./module";
 export * from "./onboarding";
 export * from "./popup";

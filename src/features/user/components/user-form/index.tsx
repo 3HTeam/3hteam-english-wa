@@ -48,7 +48,7 @@ export function UserForm({ form, mode }: UserFormProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <User className="w-5 h-5" />
-            {t("user.avatar")}
+            {t("feature.user.avatar")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -105,7 +105,7 @@ export function UserForm({ form, mode }: UserFormProps) {
       <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>{t("user.general_info")}</CardTitle>
+            <CardTitle>{t("feature.user.general_info")}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
@@ -115,11 +115,11 @@ export function UserForm({ form, mode }: UserFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t("field.full_name")} {t("common.form.required")}
+                      {t("field.user.full_name")} {t("common.form.required")}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder={t("field.full_name_placeholder")}
+                        placeholder={t("field.user.full_name_placeholder")}
                         {...field}
                         disabled={isReadonly}
                         className="transition-all focus-visible:ring-2"
@@ -136,12 +136,12 @@ export function UserForm({ form, mode }: UserFormProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t("field.email")} {t("common.form.required")}
+                      {t("field.auth.email")} {t("common.form.required")}
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder={t("field.email_placeholder")}
+                        placeholder={t("field.auth.email_placeholder")}
                         {...field}
                         disabled={true}
                         className="transition-all focus-visible:ring-2"
@@ -157,10 +157,10 @@ export function UserForm({ form, mode }: UserFormProps) {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("field.phone")}</FormLabel>
+                    <FormLabel>{t("field.user.phone")}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder={t("field.phone_placeholder")}
+                        placeholder={t("field.user.phone_placeholder")}
                         {...field}
                         value={field.value || ""}
                         disabled={isReadonly}
@@ -177,7 +177,7 @@ export function UserForm({ form, mode }: UserFormProps) {
                 name="role"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("field.role")}</FormLabel>
+                    <FormLabel>{t("field.user.role")}</FormLabel>
                     <Select
                       key={field.value}
                       onValueChange={field.onChange}
@@ -187,7 +187,7 @@ export function UserForm({ form, mode }: UserFormProps) {
                       <FormControl>
                         <SelectTrigger className="transition-all">
                           <SelectValue
-                            placeholder={t("field.role_placeholder")}
+                            placeholder={t("field.user.role_placeholder")}
                           />
                         </SelectTrigger>
                       </FormControl>
@@ -195,13 +195,13 @@ export function UserForm({ form, mode }: UserFormProps) {
                         <SelectItem value="USER">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-red-500" />
-                            {t("user.role.user")}
+                            {t("feature.user.role.user")}
                           </div>
                         </SelectItem>
                         <SelectItem value="ADMIN">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-green-500" />
-                            {t("user.role.admin")}
+                            {t("feature.user.role.admin")}
                           </div>
                         </SelectItem>
                       </SelectContent>
@@ -218,7 +218,7 @@ export function UserForm({ form, mode }: UserFormProps) {
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">
-                {t("user.learning_progress")}
+                {t("feature.user.learning_progress")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -229,7 +229,7 @@ export function UserForm({ form, mode }: UserFormProps) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">
-                        {t("field.level")}
+                        {t("field.level.level")}
                       </FormLabel>
                       <Select
                         key={`level-${field.value}-${levels?.data?.levels?.length}`}
@@ -240,7 +240,7 @@ export function UserForm({ form, mode }: UserFormProps) {
                         <FormControl>
                           <SelectTrigger className="h-9 w-full">
                             <SelectValue
-                              placeholder={t("field.level_placeholder")}
+                              placeholder={t("field.level.level_placeholder")}
                             />
                           </SelectTrigger>
                         </FormControl>
@@ -263,7 +263,7 @@ export function UserForm({ form, mode }: UserFormProps) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">
-                        {t("field.target_level")}
+                        {t("field.level.target_level")}
                       </FormLabel>
                       <Select
                         key={`target-${field.value}-${levels?.data?.levels?.length}`}
@@ -274,7 +274,9 @@ export function UserForm({ form, mode }: UserFormProps) {
                         <FormControl>
                           <SelectTrigger className="h-9 w-full">
                             <SelectValue
-                              placeholder={t("field.target_level_placeholder")}
+                              placeholder={t(
+                                "field.level.target_level_placeholder",
+                              )}
                             />
                           </SelectTrigger>
                         </FormControl>
@@ -301,12 +303,12 @@ export function UserForm({ form, mode }: UserFormProps) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">
-                        {t("field.daily_goal")}
+                        {t("field.user.daily_goal")}
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
-                          placeholder={t("field.daily_goal_placeholder")}
+                          placeholder={t("field.user.daily_goal_placeholder")}
                           {...field}
                           disabled={isReadonly}
                           className="h-9"
@@ -323,12 +325,12 @@ export function UserForm({ form, mode }: UserFormProps) {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xs">
-                        {t("field.streak")}
+                        {t("field.user.streak")}
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
-                          placeholder={t("field.streak_placeholder")}
+                          placeholder={t("field.user.streak_placeholder")}
                           {...field}
                           disabled={true}
                           className="h-9"
@@ -345,7 +347,7 @@ export function UserForm({ form, mode }: UserFormProps) {
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">
-                {t("user.account_status")}
+                {t("feature.user.account_status")}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -356,10 +358,10 @@ export function UserForm({ form, mode }: UserFormProps) {
                   <FormItem className="flex flex-row items-center justify-between rounded-lg border-2 p-4 shadow-sm bg-gradient-to-br from-background to-muted/20">
                     <div className="space-y-0.5">
                       <FormLabel className="font-medium">
-                        {t("field.email_verified")}
+                        {t("field.user.email_verified")}
                       </FormLabel>
                       <p className="text-xs text-muted-foreground">
-                        {t("user.email_verification_status")}
+                        {t("feature.user.email_verification_status")}
                       </p>
                     </div>
                     <FormControl>

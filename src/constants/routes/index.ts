@@ -14,6 +14,7 @@ const ADMIN_BASE_PATHS = {
   vocabulary: "/vocabulary",
   grammar: "/grammar",
   user: "/user",
+  exercise: "/exercise",
 } as const;
 
 const ADMIN_PATH = {
@@ -28,7 +29,6 @@ const ADMIN_PATH = {
   // Grammar routes
   grammar: ADMIN_BASE_PATHS.grammar,
   grammarCategories: `${ADMIN_BASE_PATHS.grammar}/categories`,
-  grammarExercises: `${ADMIN_BASE_PATHS.grammar}/exercises`,
   grammarTopics: `${ADMIN_BASE_PATHS.grammar}/topics`,
 
   // User routes
@@ -41,6 +41,8 @@ const ADMIN_PATH = {
   onboardings: "/onboardings",
   popups: "/popups",
   banners: "/banners",
+
+  exercises: `${ADMIN_BASE_PATHS.exercise}/exercises`,
 };
 
 export const ROUTE_PATH = {

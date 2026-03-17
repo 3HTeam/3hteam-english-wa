@@ -2,10 +2,10 @@ import z from "zod";
 
 export const getOnboardingSchema = (t: (t: string) => string) =>
   z.object({
-    title: z.string().min(1, t("field.onboarding_title_required")),
+    title: z.string().min(1, t("schema.onboarding.title_required")),
     imageUrl: z
       .string()
-      .url(t("field.image_invalid"))
+      .url(t("schema.common.image_invalid"))
       .optional()
       .or(z.literal("")),
     description: z.string().nullish(),

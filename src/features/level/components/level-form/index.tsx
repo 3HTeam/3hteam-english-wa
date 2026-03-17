@@ -40,11 +40,11 @@ export function LevelForm({ form, mode }: LevelFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.level_name")} {t("common.form.required")}
+                {t("field.level.level_name")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder={t("field.level_name_placeholder")}
+                  placeholder={t("field.level.level_name_placeholder")}
                   {...field}
                   disabled={isReadonly}
                 />
@@ -56,15 +56,15 @@ export function LevelForm({ form, mode }: LevelFormProps) {
 
         <FormField
           control={form.control}
-          name="code"
+          name="cefrLevel"
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.code")} {t("common.form.required")}
+                {t("field.level.cefr_level")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder={t("field.code_placeholder")}
+                  placeholder={t("field.level.cefr_level_placeholder")}
                   {...field}
                   disabled={isReadonly}
                 />
@@ -82,12 +82,12 @@ export function LevelForm({ form, mode }: LevelFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.order")} {t("common.form.required")}
+                {t("field.common.order")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
                   type="number"
-                  placeholder={t("field.order_placeholder")}
+                  placeholder={t("field.common.order_placeholder")}
                   {...field}
                   disabled={isReadonly}
                 />
@@ -100,9 +100,9 @@ export function LevelForm({ form, mode }: LevelFormProps) {
           control={form.control}
           name="status"
           render={({ field }) => (
-            <FormItem className="flex items-center justify-between space-x-2 mt-8 border p-2 rounded-lg">
+            <FormItem className="flex items-center justify-between space-x-2 mt-6 border p-2 rounded-lg">
               <div className="space-y-0.5">
-                <FormLabel>{t("field.status")}</FormLabel>
+                <FormLabel>{t("field.common.status")}</FormLabel>
               </div>
               <FormControl>
                 <Switch
@@ -116,15 +116,99 @@ export function LevelForm({ form, mode }: LevelFormProps) {
         />
       </div>
 
+      <div className="grid grid-cols-2 gap-4">
+        <FormField
+          control={form.control}
+          name="ieltsMin"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {t("field.level.ielts_min")} {t("common.form.required")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t("field.level.ielts_min_placeholder")}
+                  {...field}
+                  disabled={isReadonly}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="ieltsMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {t("field.level.ielts_max")} {t("common.form.required")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t("field.level.ielts_max_placeholder")}
+                  {...field}
+                  disabled={isReadonly}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <FormField
+          control={form.control}
+          name="toeicScoreMin"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {t("field.level.toeic_min")} {t("common.form.required")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t("field.level.toeic_min_placeholder")}
+                  {...field}
+                  disabled={isReadonly}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="toeicScoreMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                {t("field.level.toeic_max")} {t("common.form.required")}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t("field.level.toeic_max_placeholder")}
+                  {...field}
+                  disabled={isReadonly}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
       <FormField
         control={form.control}
         name="description"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{t("field.description")}</FormLabel>
+            <FormLabel>{t("field.common.description")}</FormLabel>
             <FormControl>
               <Textarea
-                placeholder={t("field.description_placeholder")}
+                placeholder={t("field.common.description_placeholder")}
                 rows={3}
                 value={field.value ?? EMPTY.str}
                 onChange={field.onChange}

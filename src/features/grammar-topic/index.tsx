@@ -79,7 +79,7 @@ export function GrammarTopicView() {
         toolbarProps={{
           placeholder: isTrashMode
             ? t("common.trash.search_placeholder")
-            : t("grammar_topic.search_placeholder"),
+            : t("feature.grammar_topic.search_placeholder"),
           searchColumn: COLUMN_KEYS.title,
           search,
           filters: isTrashMode
@@ -87,7 +87,7 @@ export function GrammarTopicView() {
             : [
                 {
                   columnId: "status",
-                  title: t("field.status"),
+                  title: t("field.common.status"),
                   options: getStatuses(t),
                 },
               ],

@@ -2,9 +2,13 @@ import { ApiResponse, TMeta } from "../api";
 
 export type TLevel = {
   id: string;
-  code: string;
+  cefrLevel: string;
   name: string;
   description: string;
+  toeicScoreMin: number;
+  toeicScoreMax: number;
+  ieltsMin: number;
+  ieltsMax: number;
   order: number;
   status: boolean;
   isDeleted: boolean;
@@ -16,7 +20,15 @@ export type TLevel = {
 
 export type TLevelPayload = Pick<
   TLevel,
-  "code" | "name" | "description" | "order" | "status"
+  | "cefrLevel"
+  | "name"
+  | "description"
+  | "toeicScoreMin"
+  | "toeicScoreMax"
+  | "ieltsMin"
+  | "ieltsMax"
+  | "order"
+  | "status"
 >;
 
 export type TLevelsResponse = ApiResponse<{

@@ -41,14 +41,18 @@ export function AddVocabularyView() {
     createVocabularyMutation(payload, {
       onSuccess: () => {
         toast.success(
-          t("common.toast.create_success", { item: t("vocabulary.name") }),
+          t("common.toast.create_success", {
+            item: t("feature.vocabulary.vocabulary"),
+          }),
         );
         router.push(ROUTE_PATH.admin.vocabularies);
       },
       onError: (error: any) => {
         toast.error(
           error?.response?.data?.message ||
-            t("common.toast.create_error", { item: t("vocabulary.name") }),
+            t("common.toast.create_error", {
+              item: t("feature.vocabulary.vocabulary"),
+            }),
         );
       },
     });

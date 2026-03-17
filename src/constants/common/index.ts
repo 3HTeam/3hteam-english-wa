@@ -16,6 +16,9 @@ export const EMPTY = {
   obj: {},
   arr: [],
   fn: () => {},
+  opt: undefined,
+  num: 0,
+  null: null,
 };
 
 export const MODES = {

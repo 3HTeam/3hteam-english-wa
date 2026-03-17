@@ -54,9 +54,12 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.title,
-    meta: { name: t("field.title") },
+    meta: { name: t("column.grammar_topic.title") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.title")} />
+      <DataTableColumnHeader
+        column={column}
+        title={t("column.grammar_topic.title")}
+      />
     ),
     cell: ({ row }) => (
       <span className="max-w-[300px] truncate font-medium">
@@ -66,9 +69,12 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.difficulty,
-    meta: { name: t("field.difficulty") },
+    meta: { name: t("column.grammar_topic.difficulty") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.difficulty")} />
+      <DataTableColumnHeader
+        column={column}
+        title={t("column.grammar_topic.difficulty")}
+      />
     ),
     cell: ({ row }) => {
       const difficulty = row.getValue("difficulty") as string;
@@ -88,17 +94,20 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.order,
-    meta: { name: t("field.order") },
+    meta: { name: t("column.common.order") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.order")} />
+      <DataTableColumnHeader column={column} title={t("column.common.order")} />
     ),
     cell: ({ row }) => <Badge variant="outline">{row.getValue("order")}</Badge>,
   },
   {
     accessorKey: COLUMN_KEYS.status,
-    meta: { name: t("field.status") },
+    meta: { name: t("column.common.status") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.status")} />
+      <DataTableColumnHeader
+        column={column}
+        title={t("column.common.status")}
+      />
     ),
     cell: ({ row }) => {
       const status = row.getValue("status");
@@ -111,11 +120,11 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.grammarCategory,
-    meta: { name: t("field.grammar_category") },
+    meta: { name: t("column.grammar_topic.category") },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={t("field.grammar_category")}
+        title={t("column.grammar_topic.category")}
       />
     ),
     cell: ({ row }) => {
@@ -127,9 +136,12 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.level,
-    meta: { name: t("field.level") },
+    meta: { name: t("column.grammar_topic.level") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.level")} />
+      <DataTableColumnHeader
+        column={column}
+        title={t("column.grammar_topic.level")}
+      />
     ),
     cell: ({ row }) => {
       const level = row.original.level;
@@ -144,9 +156,9 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.imageUrl,
-    meta: { name: t("field.image") },
+    meta: { name: t("column.common.image") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.image")} />
+      <DataTableColumnHeader column={column} title={t("column.common.image")} />
     ),
     cell: ({ row }) => {
       const imageUrl = row.getValue(COLUMN_KEYS.imageUrl) as string;
@@ -163,9 +175,12 @@ export const createColumns = ({
   },
   {
     accessorKey: COLUMN_KEYS.createdAt,
-    meta: { name: t("field.created_at") },
+    meta: { name: t("column.common.created_at") },
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={t("field.created_at")} />
+      <DataTableColumnHeader
+        column={column}
+        title={t("column.common.created_at")}
+      />
     ),
     cell: ({ row }) => (
       <span className="truncate font-medium">

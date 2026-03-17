@@ -9,7 +9,9 @@ export default function AddVocabularyPage() {
   return (
     <>
       {/* Mobile view placeholder */}
-      <MobileViewPlaceholder title={t("vocabulary.add_new_vocabulary")} />
+      <MobileViewPlaceholder
+        title={t("feature.vocabulary.add_new_vocabulary")}
+      />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

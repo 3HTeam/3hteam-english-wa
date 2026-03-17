@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 
-import { AxiosError } from "axios";
 import { toast } from "sonner";
 
 import {
@@ -13,7 +12,7 @@ import {
 import { MODES } from "@/constants/common";
 import { ModalMode } from "@/features/grammar-category/common/hooks/use-modal";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { FormValues } from "../../components/modal-view/schemas";
 
@@ -57,19 +56,13 @@ export const useModalActions = ({
           onSuccess: () => {
             toast.success(
               t("common.toast.create_success", {
-                item: t("grammar_category.name"),
+                item: "Danh mục ngữ pháp",
               }),
             );
             onSuccess?.();
           },
-          onError: (error: Error) => {
-            const axiosError = error as AxiosError<ApiResponse<void>>;
-            const message =
-              axiosError.response?.data?.message ||
-              axiosError.message ||
-              t("common.toast.create_error");
-            toast.error(message);
-          },
+          onError: (error: Error) =>
+            handleApiError(error, t("common.toast.create_error")),
         });
       } else if (mode === MODES.edit && selectedId) {
         updateMutation(
@@ -81,19 +74,13 @@ export const useModalActions = ({
             onSuccess: () => {
               toast.success(
                 t("common.toast.update_success", {
-                  item: t("grammar_category.name"),
+                  item: "Danh mục ngữ pháp",
                 }),
               );
               onSuccess?.();
             },
-            onError: (error: Error) => {
-              const axiosError = error as AxiosError<ApiResponse<void>>;
-              const message =
-                axiosError.response?.data?.message ||
-                axiosError.message ||
-                t("common.toast.update_error");
-              toast.error(message);
-            },
+            onError: (error: Error) =>
+              handleApiError(error, t("common.toast.update_error")),
           },
         );
       }
@@ -107,19 +94,13 @@ export const useModalActions = ({
         onSuccess: () => {
           toast.success(
             t("common.toast.delete_success", {
-              item: t("grammar_category.name"),
+              item: "Danh mục ngữ pháp",
             }),
           );
           onSuccess?.();
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message =
-            axiosError.response?.data?.message ||
-            axiosError.message ||
-            t("common.toast.delete_error");
-          toast.error(message);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.delete_error")),
       });
     },
     [deleteMutation, onSuccess, t],
@@ -131,19 +112,13 @@ export const useModalActions = ({
         onSuccess: () => {
           toast.success(
             t("common.toast.restore_success", {
-              item: t("grammar_category.name"),
+              item: "Danh mục ngữ pháp",
             }),
           );
           onSuccess?.();
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message =
-            axiosError.response?.data?.message ||
-            axiosError.message ||
-            t("common.toast.restore_error");
-          toast.error(message);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.restore_error")),
       });
     },
     [restoreMutation, onSuccess, t],
@@ -155,19 +130,13 @@ export const useModalActions = ({
         onSuccess: () => {
           toast.success(
             t("common.toast.force_delete_success", {
-              item: t("grammar_category.name"),
+              item: "Danh mục ngữ pháp",
             }),
           );
           onSuccess?.();
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message =
-            axiosError.response?.data?.message ||
-            axiosError.message ||
-            t("common.toast.force_delete_error");
-          toast.error(message);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.force_delete_error")),
       });
     },
     [forceDeleteMutation, onSuccess, t],

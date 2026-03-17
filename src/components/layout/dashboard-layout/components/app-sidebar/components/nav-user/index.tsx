@@ -150,19 +150,19 @@ export const NavUser = ({
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/account">
                   <CircleUser />
-                  {t("user.accounts")}
+                  {t("feature.user.accounts")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/billing">
                   <CreditCard />
-                  {t("billing.billings")}
+                  {t("feature.billing.billings")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/notifications">
                   <BellDot />
-                  {t("notification.notifications")}
+                  {t("feature.notification.notifications")}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>

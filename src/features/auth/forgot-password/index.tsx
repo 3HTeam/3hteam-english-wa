@@ -73,13 +73,13 @@ export function ForgotPassword({ className, ...props }: ComponentProps<"div">) {
                     render={({ field }) => (
                       <FormItem className="grid gap-3">
                         <FormLabel htmlFor="email">
-                          {t("field.email")}
+                          {t("field.auth.email")}
                         </FormLabel>
                         <FormControl>
                           <Input
                             id="email"
                             type="email"
-                            placeholder={t("field.email_placeholder")}
+                            placeholder={t("field.auth.email_placeholder")}
                             autoComplete="email"
                             required
                             {...field}

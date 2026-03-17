@@ -49,11 +49,11 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.title")} {t("common.form.required")}
+                {t("field.grammar_topic.title")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder={t("field.title_placeholder")}
+                  placeholder={t("field.grammar_topic.title_placeholder")}
                   {...field}
                   onChange={(e) => {
                     field.onChange(e);
@@ -73,11 +73,11 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.slug")} {t("common.form.required")}
+                {t("field.grammar_topic.slug")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
-                  placeholder={t("field.slug_placeholder")}
+                  placeholder={t("field.grammar_topic.slug_placeholder")}
                   {...field}
                   disabled={isViewMode}
                 />
@@ -95,7 +95,8 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.difficulty")} {t("common.form.required")}
+                {t("field.grammar_topic.difficulty")}{" "}
+                {t("common.form.required")}
               </FormLabel>
               <Select
                 onValueChange={field.onChange}
@@ -105,7 +106,9 @@ export function FormFields({
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue
-                      placeholder={t("field.difficulty_placeholder")}
+                      placeholder={t(
+                        "field.grammar_topic.difficulty_placeholder",
+                      )}
                     />
                   </SelectTrigger>
                 </FormControl>
@@ -132,12 +135,12 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.order")} {t("common.form.required")}
+                {t("field.common.order")} {t("common.form.required")}
               </FormLabel>
               <FormControl>
                 <Input
                   type="number"
-                  placeholder={t("field.order_placeholder")}
+                  placeholder={t("field.common.order_placeholder")}
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                   disabled={isViewMode}
@@ -154,7 +157,7 @@ export function FormFields({
           render={({ field }) => (
             <FormItem className="flex items-center justify-between space-x-2">
               <div className="space-y-0.5">
-                <FormLabel>{t("field.status")}</FormLabel>
+                <FormLabel>{t("field.common.status")}</FormLabel>
               </div>
               <FormControl>
                 <Switch
@@ -175,7 +178,7 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.level")} {t("common.form.required")}
+                {t("field.level.level")} {t("common.form.required")}
               </FormLabel>
               <Select
                 onValueChange={field.onChange}
@@ -184,7 +187,9 @@ export function FormFields({
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={t("field.level_placeholder")} />
+                    <SelectValue
+                      placeholder={t("field.level.level_placeholder")}
+                    />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -205,7 +210,8 @@ export function FormFields({
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("field.grammar_category")} {t("common.form.required")}
+                {t("field.grammar_category.grammar_category")}{" "}
+                {t("common.form.required")}
               </FormLabel>
               <Select
                 onValueChange={field.onChange}
@@ -215,7 +221,9 @@ export function FormFields({
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue
-                      placeholder={t("field.grammar_category_placeholder")}
+                      placeholder={t(
+                        "field.grammar_category.grammar_category_placeholder",
+                      )}
                     />
                   </SelectTrigger>
                 </FormControl>
@@ -238,7 +246,7 @@ export function FormFields({
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              {t("field.image")} {t("common.form.required")}
+              {t("field.common.image")} {t("common.form.required")}
             </FormLabel>
             <FormControl>
               {field.value ? (
@@ -286,10 +294,10 @@ export function FormFields({
         name="description"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{t("field.description")}</FormLabel>
+            <FormLabel>{t("field.common.description")}</FormLabel>
             <FormControl>
               <Textarea
-                placeholder={t("field.description_placeholder")}
+                placeholder={t("field.common.description_placeholder")}
                 rows={3}
                 value={field.value ?? EMPTY.str}
                 onChange={field.onChange}
@@ -307,11 +315,11 @@ export function FormFields({
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              {t("field.content")} {t("common.form.required")}
+              {t("field.grammar_topic.content")} {t("common.form.required")}
             </FormLabel>
             <FormControl>
               <Textarea
-                placeholder={t("field.content_placeholder")}
+                placeholder={t("field.grammar_topic.content_placeholder")}
                 rows={8}
                 value={field.value ?? EMPTY.str}
                 onChange={field.onChange}
