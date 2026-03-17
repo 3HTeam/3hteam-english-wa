@@ -57,11 +57,11 @@ export function BannerForm({ form, mode }: BannerFormProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              {t("field.banner_title")} {t("common.form.required")}
+              {t("field.banner.banner_title")} {t("common.form.required")}
             </FormLabel>
             <FormControl>
               <Input
-                placeholder={t("field.banner_title_placeholder")}
+                placeholder={t("field.banner.banner_title_placeholder")}
                 {...field}
                 disabled={isReadonly}
                 onChange={(e) => {
@@ -80,7 +80,7 @@ export function BannerForm({ form, mode }: BannerFormProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              {t("field.module")} {t("common.form.required")}
+              {t("field.module.module")} {t("common.form.required")}
             </FormLabel>
             <Select
               onValueChange={field.onChange}
@@ -89,7 +89,9 @@ export function BannerForm({ form, mode }: BannerFormProps) {
             >
               <FormControl>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder={t("field.module_placeholder")} />
+                  <SelectValue
+                    placeholder={t("field.module.module_placeholder")}
+                  />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
@@ -109,7 +111,7 @@ export function BannerForm({ form, mode }: BannerFormProps) {
         name="imageUrl"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{t("field.image")}</FormLabel>
+            <FormLabel>{t("field.common.image")}</FormLabel>
             <FormControl>
               {field.value ? (
                 <div className="relative group w-fit">
@@ -157,10 +159,10 @@ export function BannerForm({ form, mode }: BannerFormProps) {
         name="description"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{t("field.description")}</FormLabel>
+            <FormLabel>{t("field.common.description")}</FormLabel>
             <FormControl>
               <Textarea
-                placeholder={t("field.description_placeholder")}
+                placeholder={t("field.common.description_placeholder")}
                 rows={3}
                 value={field.value ?? EMPTY.str}
                 onChange={field.onChange}
@@ -177,7 +179,7 @@ export function BannerForm({ form, mode }: BannerFormProps) {
         render={({ field }) => (
           <FormItem className="flex items-center justify-between space-x-2">
             <div className="space-y-0.5">
-              <FormLabel>{t("field.status")}</FormLabel>
+              <FormLabel>{t("field.common.status")}</FormLabel>
             </div>
             <FormControl>
               <Switch

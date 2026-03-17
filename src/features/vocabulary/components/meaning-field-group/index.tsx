@@ -79,7 +79,7 @@ export function MeaningFieldGroup({
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-medium flex items-center gap-2">
             <Badge variant="outline">#{meaningIndex + 1}</Badge>
-            {t("vocabulary.meaning.info")}
+            {t("feature.vocabulary.meaning.info")}
           </CardTitle>
           {canRemove && !isReadOnly && (
             <Button
@@ -102,7 +102,8 @@ export function MeaningFieldGroup({
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  {t("field.part_of_speech")} {t("common.form.required")}
+                  {t("field.vocabulary.part_of_speech")}{" "}
+                  {t("common.form.required")}
                 </FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -112,7 +113,9 @@ export function MeaningFieldGroup({
                   <FormControl>
                     <SelectTrigger className="cursor-pointer">
                       <SelectValue
-                        placeholder={t("field.part_of_speech_placeholder")}
+                        placeholder={t(
+                          "field.vocabulary.part_of_speech_placeholder",
+                        )}
                       />
                     </SelectTrigger>
                   </FormControl>
@@ -138,10 +141,10 @@ export function MeaningFieldGroup({
             name={`meanings.${meaningIndex}.synonyms`}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("field.synonyms")}</FormLabel>
+                <FormLabel>{t("field.vocabulary.synonyms")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={t("field.synonyms_placeholder")}
+                    placeholder={t("field.vocabulary.synonyms_placeholder")}
                     value={field.value?.join(", ") || EMPTY.str}
                     disabled={isReadOnly}
                     onChange={(e) => {
@@ -164,10 +167,10 @@ export function MeaningFieldGroup({
             name={`meanings.${meaningIndex}.antonyms`}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("field.antonyms")}</FormLabel>
+                <FormLabel>{t("field.vocabulary.antonyms")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={t("field.antonyms_placeholder")}
+                    placeholder={t("field.vocabulary.antonyms_placeholder")}
                     value={field.value?.join(", ") || EMPTY.str}
                     disabled={isReadOnly}
                     onChange={(e) => {
@@ -191,7 +194,7 @@ export function MeaningFieldGroup({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h4 className="text-sm font-semibold">
-              {t("vocabulary.definition.list")}
+              {t("feature.vocabulary.definition.list")}
             </h4>
             {!isReadOnly && (
               <Button
@@ -202,7 +205,7 @@ export function MeaningFieldGroup({
                 className="cursor-pointer h-8"
               >
                 <Plus className="h-3 w-3 mr-1" />
-                {t("vocabulary.definition.add")}
+                {t("feature.vocabulary.definition.add")}
               </Button>
             )}
           </div>
@@ -234,12 +237,14 @@ export function MeaningFieldGroup({
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-xs uppercase text-muted-foreground">
-                          {t("field.definition")} (EN){" "}
+                          {t("field.vocabulary.definition")} (EN){" "}
                           {t("common.form.required")}
                         </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder={t("field.definition_placeholder")}
+                            placeholder={t(
+                              "field.vocabulary.definition_placeholder",
+                            )}
                             className="resize-none min-h-[60px]"
                             disabled={isReadOnly}
                             {...field}
@@ -256,12 +261,14 @@ export function MeaningFieldGroup({
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-xs uppercase text-muted-foreground">
-                          {t("field.translation")} (VI){" "}
+                          {t("field.vocabulary.translation")} (VI){" "}
                           {t("common.form.required")}
                         </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder={t("field.translation_placeholder")}
+                            placeholder={t(
+                              "field.vocabulary.translation_placeholder",
+                            )}
                             className="resize-none min-h-[60px]"
                             disabled={isReadOnly}
                             {...field}
@@ -278,11 +285,13 @@ export function MeaningFieldGroup({
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-xs uppercase text-muted-foreground">
-                          {t("field.example")} (EN)
+                          {t("field.vocabulary.example")} (EN)
                         </FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder={t("field.example_placeholder")}
+                            placeholder={t(
+                              "field.vocabulary.example_placeholder",
+                            )}
                             className="resize-none min-h-[60px]"
                             value={field.value || EMPTY.str}
                             onChange={field.onChange}
@@ -300,12 +309,12 @@ export function MeaningFieldGroup({
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-xs uppercase text-muted-foreground">
-                          {t("field.example_translation")} (VI)
+                          {t("field.vocabulary.example_translation")} (VI)
                         </FormLabel>
                         <FormControl>
                           <Textarea
                             placeholder={t(
-                              "field.example_translation_placeholder",
+                              "field.vocabulary.example_translation_placeholder",
                             )}
                             className="resize-none min-h-[60px]"
                             value={field.value || EMPTY.str}

@@ -1,7 +1,7 @@
 import * as authServices from "./auth/auth.service";
 import * as bannerServices from "./banner/banner.service";
+import * as exerciseServices from "./excercise/excercise.service";
 import * as grammarCategoryServices from "./grammar-category/grammar-category.service";
-import * as grammarExerciseServices from "./grammar-exercise/grammar-exercise.service";
 import * as grammarTopicServices from "./grammar-topic/grammar-topic.service";
 import * as levelServices from "./level/level.service";
 import * as moduleServices from "./module/module.service";
@@ -23,9 +23,9 @@ export const apiServices = {
   setting: settingServices,
   grammarCategory: grammarCategoryServices,
   grammarTopic: grammarTopicServices,
-  grammarExercise: grammarExerciseServices,
   module: moduleServices,
   onboarding: onboardingServices,
   popup: popupServices,
   banner: bannerServices,
+  exercise: exerciseServices,
 };

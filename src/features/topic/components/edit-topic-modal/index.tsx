@@ -3,27 +3,18 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
 import { Loader2, Pencil } from "lucide-react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 
 import { useGetTopicByIdQuery, useUpdateTopicMutation } from "@/apis/hooks";
 import { DialogError } from "@/components/shared/dialog";
+import { ModalCustom } from "@/components/shared/modal-custom";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { EMPTY, MODES } from "@/constants/common";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
-import { TUpdateTopicResponse } from "@/types/features";
+import { handleApiError } from "@/utils/api/handle-api-error";
 import { generateSlug } from "@/utils/string";
 
 import { topicDefaultValues } from "../../common";
@@ -100,17 +91,12 @@ export function EditTopicModal({
         },
       },
       {
-        onSuccess: (data: TUpdateTopicResponse) => {
+        onSuccess: (data) => {
           toast.success(data?.message || t("common.toast.update_success"));
           onOpenChange?.(false);
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.update_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.update_error")),
       },
     );
   };
@@ -126,64 +112,65 @@ export function EditTopicModal({
       <DialogError
         open={controlledOpen}
         onOpenChange={onOpenChange}
-        title={t("topic.edit_topic")}
+        title={t("feature.topic.edit_topic")}
         onClose={handleCancel}
       />
     );
   }
 
-  return (
-    <Dialog open={controlledOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="data-[state=open]:!zoom-in-0 data-[state=open]:duration-600 sm:max-w-[650px] max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{t("topic.edit_topic")}</DialogTitle>
-          <DialogDescription>{t("topic.edit_topic_desc")}</DialogDescription>
-        </DialogHeader>
-
-        {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <LoadingSpinner />
-          </div>
+  const footer = (
+    <div className="flex justify-end space-x-2">
+      <Button
+        type="button"
+        variant="outline"
+        onClick={handleCancel}
+        className="cursor-pointer"
+      >
+        {t("common.actions.cancel")}
+      </Button>
+      <Button
+        type="submit"
+        form="edit-topic-form"
+        className="cursor-pointer min-w-[130px]"
+        disabled={isPending}
+      >
+        {isPending ? (
+          <>
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            {t("common.actions.saving")}
+          </>
         ) : (
-          <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <TopicForm
-                form={form}
-                mode={MODES.edit}
-                onNameChange={handleNameChange}
-              />
-
-              <div className="flex justify-end space-x-2 pt-4">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleCancel}
-                  className="cursor-pointer"
-                >
-                  {t("common.actions.cancel")}
-                </Button>
-                <Button
-                  type="submit"
-                  className="cursor-pointer min-w-[130px]"
-                  disabled={isPending}
-                >
-                  {isPending ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      {t("common.actions.saving")}
-                    </>
-                  ) : (
-                    <>
-                      <Pencil className="w-4 h-4 mr-2" />
-                      {t("common.actions.update")}
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
-          </Form>
+          <>
+            <Pencil className="w-4 h-4 mr-2" />
+            {t("common.actions.update")}
+          </>
         )}
-      </DialogContent>
-    </Dialog>
+      </Button>
+    </div>
+  );
+
+  return (
+    <ModalCustom
+      open={controlledOpen ?? false}
+      onOpenChange={onOpenChange ?? (() => {})}
+      title={t("feature.topic.edit_topic")}
+      description={t("feature.topic.edit_topic_desc")}
+      footer={footer}
+      isLoading={isLoading}
+    >
+      <Form {...form}>
+        <form
+          id="edit-topic-form"
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6"
+        >
+          <TopicForm
+            form={form}
+            mode={MODES.edit}
+            onNameChange={handleNameChange}
+          />
+        </form>
+      </Form>
+    </ModalCustom>
   );
 }

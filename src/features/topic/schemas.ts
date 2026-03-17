@@ -2,12 +2,12 @@ import { z } from "zod";
 
 export const getTopicSchema = (t: (key: string) => string) =>
   z.object({
-    name: z.string().min(1, t("field.topic_name_required")),
+    name: z.string().min(1, t("schema.topic.name_required")),
     imageUrl: z
       .string()
-      .min(1, t("field.image_required"))
-      .url(t("field.image_invalid")),
-    slug: z.string().min(1, t("field.slug_required")),
+      .min(1, t("schema.topic.image_required"))
+      .url(t("schema.common.image_invalid")),
+    slug: z.string().min(1, t("schema.topic.slug_required")),
     description: z.string().nullable().optional(),
     status: z.boolean(),
   });

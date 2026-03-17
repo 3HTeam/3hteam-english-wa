@@ -4,10 +4,14 @@ import { LevelFormValues } from "../schemas";
 
 export const COLUMN_KEYS = {
   id: "id",
-  code: "code",
+  cefrLevel: "cefrLevel",
   name: "name",
-  status: "status",
+  toeicScoreMin: "toeicScoreMin",
+  toeicScoreMax: "toeicScoreMax",
+  ieltsMin: "ieltsMin",
+  ieltsMax: "ieltsMax",
   order: "order",
+  status: "status",
   description: "description",
   createdAt: "createdAt",
   updatedAt: "updatedAt",
@@ -15,9 +19,13 @@ export const COLUMN_KEYS = {
 };
 
 export const levelDefaultValues: LevelFormValues = {
-  code: EMPTY.str,
+  cefrLevel: EMPTY.str,
   name: EMPTY.str,
   description: EMPTY.str,
+  toeicScoreMin: 0,
+  toeicScoreMax: 0,
+  ieltsMin: 0,
+  ieltsMax: 0,
   order: 0,
   status: true,
 };

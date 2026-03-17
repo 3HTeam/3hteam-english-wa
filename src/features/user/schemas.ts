@@ -2,9 +2,11 @@ import { z } from "zod";
 
 export const getUserSchema = (t: (key: string) => string) =>
   z.object({
-    email: z.string().email(t("field.email_invalid")),
-    fullName: z.string().min(1, t("field.full_name_required")),
-    role: z.enum(["ADMIN", "USER"]),
+    email: z.string().email(t("schema.user.email_invalid")),
+    fullName: z.string().min(1, t("schema.user.full_name_required")),
+    role: z.enum(["ADMIN", "USER"], {
+      message: t("schema.user.role_invalid"),
+    }),
     avatar: z.string().nullish(),
     phone: z.string().nullish(),
     levelId: z.string().nullish(),

@@ -49,17 +49,20 @@ export const createColumns = (
     enableHiding: false,
   },
   {
-    accessorKey: COLUMN_KEYS.code,
+    accessorKey: COLUMN_KEYS.cefrLevel,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.code")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.level.cefr_level")}
+      />
     ),
     meta: {
-      name: options.t("field.code"),
+      name: options.t("column.level.cefr_level"),
     },
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <Badge variant="outline">{row.getValue("code")}</Badge>
+          <Badge variant="outline">{row.getValue("cefrLevel")}</Badge>
         </div>
       );
     },
@@ -72,11 +75,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.level_name")}
+        title={options.t("column.level.name")}
       />
     ),
     meta: {
-      name: options.t("field.level_name"),
+      name: options.t("column.level.name"),
     },
     cell: ({ row }) => {
       return (
@@ -93,11 +96,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.status")}
+        title={options.t("column.common.status")}
       />
     ),
     meta: {
-      name: options.t("field.status"),
+      name: options.t("column.common.status"),
     },
     cell: ({ row }) => {
       const status = row.getValue("status");
@@ -118,10 +121,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.order,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.order")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.common.order")}
+      />
     ),
     meta: {
-      name: options.t("field.order"),
+      name: options.t("column.common.order"),
     },
     cell: ({ row }) => {
       return (
@@ -136,11 +142,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.description")}
+        title={options.t("column.common.description")}
       />
     ),
     meta: {
-      name: options.t("field.description"),
+      name: options.t("column.common.description"),
     },
     cell: ({ row }) => {
       return (
@@ -160,11 +166,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.created_at")}
+        title={options.t("column.common.created_at")}
       />
     ),
     meta: {
-      name: options.t("field.created_at"),
+      name: options.t("column.common.created_at"),
     },
     cell: ({ row }) => {
       return (
@@ -181,11 +187,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.updated_at")}
+        title={options.t("column.common.updated_at")}
       />
     ),
     meta: {
-      name: options.t("field.updated_at"),
+      name: options.t("column.common.updated_at"),
     },
     cell: ({ row }) => {
       return (

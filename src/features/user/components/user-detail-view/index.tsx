@@ -116,19 +116,21 @@ export function UserDetailView({ id }: UserDetailViewProps) {
                 <ArrowLeft className="h-4 w-4" />
               </Button>
               <BreadcrumbLink asChild>
-                <Link href={ROUTE_PATH.admin.users}>{t("user.users")}</Link>
+                <Link href={ROUTE_PATH.admin.users}>
+                  {t("feature.user.users")}
+                </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{t("user.user_details")}</BreadcrumbPage>
+              <BreadcrumbPage>{t("feature.user.user_details")}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight">
-            {t("user.user_details")}
+            {t("feature.user.user_details")}
           </h1>
           <Button
             onClick={() => router.push(`${ROUTE_PATH.admin.users}/${id}/edit`)}

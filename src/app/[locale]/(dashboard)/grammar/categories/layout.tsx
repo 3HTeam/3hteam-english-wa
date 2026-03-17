@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CategoriesLayout({
+export default function CategoryLayout({
   children,
 }: {
   children: React.ReactNode;

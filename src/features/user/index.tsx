@@ -44,7 +44,7 @@ export function UserView() {
       data={users?.data?.users || []}
       columns={columns}
       toolbarProps={{
-        placeholder: t("user.search_placeholder"),
+        placeholder: t("feature.user.search_placeholder"),
         searchColumn: COLUMN_KEYS.fullName,
         search,
         onSearchChange: (val) => {

@@ -9,7 +9,7 @@ export default function OnboardingPage() {
   return (
     <>
       {/* Mobile view placeholder - shows message instead of images */}
-      <MobileViewPlaceholder title={t("onboarding.onboardings")} />
+      <MobileViewPlaceholder title={t("feature.onboarding.onboardings")} />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

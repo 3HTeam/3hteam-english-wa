@@ -10,7 +10,9 @@ export default function GrammarTopicsPage() {
   return (
     <>
       {/* Mobile view placeholder */}
-      <MobileViewPlaceholder title={t("grammar_topic.grammar_topics")} />
+      <MobileViewPlaceholder
+        title={t("feature.grammar_topic.grammar_topics")}
+      />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

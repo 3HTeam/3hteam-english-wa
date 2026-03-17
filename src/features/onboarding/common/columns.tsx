@@ -50,15 +50,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.title,
+    meta: {
+      name: options.t("column.onboarding.title"),
+    },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.onboarding_title")}
+        title={options.t("column.onboarding.title")}
       />
     ),
-    meta: {
-      name: options.t("field.onboarding_title"),
-    },
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
@@ -71,12 +71,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.imageUrl,
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.image")} />
-    ),
     meta: {
-      name: options.t("field.image"),
+      name: options.t("column.common.image"),
     },
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.common.image")}
+      />
+    ),
     cell: ({ row }) => {
       const imageUrl = row.getValue("imageUrl") as string;
       return (
@@ -96,15 +99,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.description,
+    meta: {
+      name: options.t("column.common.description"),
+    },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.description")}
+        title={options.t("column.common.description")}
       />
     ),
-    meta: {
-      name: options.t("field.description"),
-    },
     cell: ({ row }) => {
       return (
         <div className="flex items-center">
@@ -117,15 +120,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.status,
+    meta: {
+      name: options.t("column.common.status"),
+    },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.status")}
+        title={options.t("column.common.status")}
       />
     ),
-    meta: {
-      name: options.t("field.status"),
-    },
     cell: ({ row }) => {
       const status = row.getValue("status");
       return (
@@ -144,15 +147,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.createdAt,
+    meta: {
+      name: options.t("column.common.created_at"),
+    },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.created_at")}
+        title={options.t("column.common.created_at")}
       />
     ),
-    meta: {
-      name: options.t("field.created_at"),
-    },
     cell: ({ row }) => {
       return (
         <div className="flex items-center">
@@ -165,15 +168,15 @@ export const createColumns = (
   },
   {
     accessorKey: COLUMN_KEYS.updatedAt,
+    meta: {
+      name: options.t("column.common.updated_at"),
+    },
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.updated_at")}
+        title={options.t("column.common.updated_at")}
       />
     ),
-    meta: {
-      name: options.t("field.updated_at"),
-    },
     cell: ({ row }) => {
       return (
         <div className="flex items-center">

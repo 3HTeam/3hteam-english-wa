@@ -2,28 +2,44 @@
 
 import Image from "next/image";
 
-
-
 import { Icon } from "@iconify/react";
-import { Mail, MapPin, Palette, Phone, Settings, Upload, X } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Palette,
+  Phone,
+  Settings,
+  Upload,
+  X,
+} from "lucide-react";
 import { UseFormReturn } from "react-hook-form";
-
-
 
 import { FileUpload } from "@/components/shared/file-upload";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ColorPicker, ColorPickerArea, ColorPickerContent, ColorPickerEyeDropper, ColorPickerHueSlider, ColorPickerInput, ColorPickerSwatch, ColorPickerTrigger } from "@/components/ui/color-picker";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  ColorPicker,
+  ColorPickerArea,
+  ColorPickerContent,
+  ColorPickerEyeDropper,
+  ColorPickerHueSlider,
+  ColorPickerInput,
+  ColorPickerSwatch,
+  ColorPickerTrigger,
+} from "@/components/ui/color-picker";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { EMPTY } from "@/constants/common";
 import { useTranslations } from "@/hooks";
 
-
-
 import { SettingFormValues } from "../../schema";
-
 
 interface SettingFormProps {
   form: UseFormReturn<SettingFormValues>;
@@ -40,7 +56,7 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Settings className="w-5 h-5 text-primary" />
-              {t("setting.app_info")}
+              {t("feature.setting.app_info")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -50,11 +66,11 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {t("setting.app_name")} {t("common.form.required")}
+                    {t("feature.setting.app_name")} {t("common.form.required")}
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder={t("setting.app_name_placeholder")}
+                      placeholder={t("feature.setting.app_name_placeholder")}
                       {...field}
                       disabled={isReadonly}
                       className="transition-all focus-visible:ring-2"
@@ -71,7 +87,8 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    {t("setting.primary_color")} {t("common.form.required")}
+                    {t("feature.setting.primary_color")}{" "}
+                    {t("common.form.required")}
                   </FormLabel>
                   <FormControl>
                     <ColorPicker
@@ -112,10 +129,12 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
               name="appDescription"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("setting.app_description")}</FormLabel>
+                  <FormLabel>{t("feature.setting.app_description")}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder={t("setting.app_description_placeholder")}
+                      placeholder={t(
+                        "feature.setting.app_description_placeholder",
+                      )}
                       {...field}
                       value={field.value || ""}
                       disabled={isReadonly}
@@ -134,7 +153,7 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Mail className="w-5 h-5 text-primary" />
-              {t("setting.contact_info")}
+              {t("feature.setting.contact_info")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -145,12 +164,12 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
-                    {t("field.email")}
+                    {t("field.auth.email")}
                   </FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder={t("field.email_placeholder")}
+                      placeholder={t("field.auth.email_placeholder")}
                       {...field}
                       value={field.value || ""}
                       disabled={isReadonly}
@@ -168,11 +187,11 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
-                    {t("field.phone")}
+                    {t("field.user.phone")}
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder={t("field.phone_placeholder")}
+                      placeholder={t("field.user.phone_placeholder")}
                       {...field}
                       value={field.value || ""}
                       disabled={isReadonly}
@@ -190,11 +209,11 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
-                    {t("setting.address")}
+                    {t("feature.setting.address")}
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder={t("setting.address_placeholder")}
+                      placeholder={t("feature.setting.address_placeholder")}
                       {...field}
                       value={field.value || ""}
                       disabled={isReadonly}
@@ -214,7 +233,7 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-lg">
               <Upload className="w-4 h-4 text-primary" />
-              {t("setting.logo")}
+              {t("feature.setting.logo")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -270,7 +289,7 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-lg">
               <Palette className="w-4 h-4 text-primary" />
-              {t("setting.favicon")}
+              {t("feature.setting.favicon")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -327,7 +346,7 @@ export function SettingForm({ form, isReadonly = false }: SettingFormProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Icon icon="ion:social-rss" />
-            {t("setting.social_media")}
+            {t("feature.setting.social_media")}
           </CardTitle>
         </CardHeader>
         <CardContent>

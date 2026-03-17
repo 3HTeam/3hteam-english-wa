@@ -3,7 +3,6 @@
 import { useMemo, type ComponentProps } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -28,6 +27,7 @@ import { useTranslations } from "@/hooks";
 import { Link, useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores";
 import { type ApiResponse } from "@/types/api";
+import { handleApiError } from "@/utils/api/handle-api-error";
 import { cn } from "@/utils/shadcn";
 
 import { getSignUpSchema, type SignUpFormValues } from "./schemas";
@@ -62,12 +62,7 @@ export function SignUp({ className, ...props }: ComponentProps<"div">) {
           toast.success(data?.message || t("auth.signup.ok"));
           router.push(ROUTE_PATH.auth.verifyEmail);
         },
-        onError: (error: unknown) => {
-          const axiosError = error as AxiosError<ApiResponse>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage = axiosError.message || t("auth.signup.err");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) => handleApiError(error, t("auth.signup.err")),
       },
     );
   };
@@ -96,13 +91,13 @@ export function SignUp({ className, ...props }: ComponentProps<"div">) {
                   render={({ field }) => (
                     <FormItem className="grid gap-3">
                       <FormLabel htmlFor="fullName">
-                        {t("field.full_name")}
+                        {t("field.auth.full_name")}
                       </FormLabel>
                       <FormControl>
                         <Input
                           id="fullName"
                           type="text"
-                          placeholder={t("field.full_name_placeholder")}
+                          placeholder={t("field.auth.full_name_placeholder")}
                           autoComplete="fullName"
                           required
                           disabled={isPending}
@@ -118,12 +113,14 @@ export function SignUp({ className, ...props }: ComponentProps<"div">) {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="grid gap-3">
-                      <FormLabel htmlFor="email">{t("field.email")}</FormLabel>
+                      <FormLabel htmlFor="email">
+                        {t("field.auth.email")}
+                      </FormLabel>
                       <FormControl>
                         <Input
                           id="email"
                           type="email"
-                          placeholder={t("field.email_placeholder")}
+                          placeholder={t("field.auth.email_placeholder")}
                           autoComplete="email"
                           required
                           disabled={isPending}
@@ -142,14 +139,14 @@ export function SignUp({ className, ...props }: ComponentProps<"div">) {
                       <FormItem className="grid gap-3 flex-1">
                         <div className="flex items-center">
                           <FormLabel htmlFor="password">
-                            {t("field.password")}
+                            {t("field.auth.password")}
                           </FormLabel>
                         </div>
                         <FormControl>
                           <Input
                             id="password"
                             type="password"
-                            placeholder={t("field.password_placeholder")}
+                            placeholder={t("field.auth.password_placeholder")}
                             autoComplete="current-password"
                             required
                             disabled={isPending}
@@ -167,14 +164,14 @@ export function SignUp({ className, ...props }: ComponentProps<"div">) {
                       <FormItem className="grid gap-3 flex-1">
                         <div className="flex items-center">
                           <FormLabel htmlFor="confirmPassword">
-                            {t("field.confirm_password")}
+                            {t("field.auth.confirm_password")}
                           </FormLabel>
                         </div>
                         <FormControl>
                           <Input
                             id="confirmPassword"
                             type="password"
-                            placeholder={t("field.password_placeholder")}
+                            placeholder={t("field.auth.password_placeholder")}
                             autoComplete="confirmPassword"
                             required
                             disabled={isPending}

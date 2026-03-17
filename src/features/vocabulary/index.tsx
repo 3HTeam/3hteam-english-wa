@@ -4,8 +4,6 @@ import React, { useMemo, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import { AxiosError } from "axios";
-import { ArrowLeft, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -20,11 +18,11 @@ import {
   DataTableSelectFilter,
 } from "@/components/shared/data-table";
 import { DialogDelete } from "@/components/shared/dialog";
-import { Button } from "@/components/ui/button";
+import { ToolbarActions } from "@/components/shared/toolbar-actions";
 import { EMPTY, MODES } from "@/constants/common";
 import { ROUTE_PATH } from "@/constants/routes";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { createColumns, getStatuses } from "./common";
 import { AddVocabularyModal } from "./components";
@@ -95,13 +93,8 @@ export function VocabularyView() {
       onSuccess: (data) => {
         toast.success(data?.message || t("common.toast.restore_success"));
       },
-      onError: (error) => {
-        const axiosError = error as AxiosError<ApiResponse<void>>;
-        const message = axiosError.response?.data?.message;
-        const fallbackMessage =
-          axiosError.message || t("common.toast.restore_error");
-        toast.error(message || fallbackMessage);
-      },
+      onError: (error: Error) =>
+        handleApiError(error, t("common.toast.restore_error")),
     });
   };
 
@@ -128,13 +121,8 @@ export function VocabularyView() {
             data?.message || t("common.toast.force_delete_success"),
           );
         },
-        onError: (error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.force_delete_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.force_delete_error")),
       });
     } else {
       deleteVocabulary(deleteModalState.vocabularyId, {
@@ -146,13 +134,8 @@ export function VocabularyView() {
           });
           toast.success(data?.message || t("common.toast.delete_success"));
         },
-        onError: (error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.delete_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.delete_error")),
       });
     }
   };
@@ -203,37 +186,16 @@ export function VocabularyView() {
         data={vocabulary?.data?.vocabularies || EMPTY.arr}
         columns={columns}
         addButton={
-          isTrashMode ? (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleToggleTrashMode}
-              className="cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              {t("common.actions.back")}
-            </Button>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Button
-                variant="destructive"
-                size="sm"
-                onClick={handleToggleTrashMode}
-                className="cursor-pointer"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span className="hidden lg:inline ml-1">
-                  {t("common.trash.trash")}
-                </span>
-              </Button>
-              <AddVocabularyModal />
-            </div>
-          )
+          <ToolbarActions
+            isTrashMode={isTrashMode}
+            onToggleTrashMode={handleToggleTrashMode}
+            addButton={<AddVocabularyModal />}
+          />
         }
         toolbarProps={{
           placeholder: isTrashMode
             ? t("common.trash.search_placeholder")
-            : t("vocabulary.search_placeholder"),
+            : t("feature.vocabulary.search_placeholder"),
           searchColumn: "word",
           search,
           filters: isTrashMode
@@ -241,7 +203,7 @@ export function VocabularyView() {
             : [
                 {
                   columnId: "status",
-                  title: t("field.status"),
+                  title: t("field.common.status"),
                   options: statuses,
                 },
               ],
@@ -257,8 +219,8 @@ export function VocabularyView() {
           },
           customFilters: isTrashMode ? null : (
             <DataTableSelectFilter
-              title={t("field.topic")}
-              placeholder={t("field.topic_placeholder")}
+              title={t("field.vocabulary.topic")}
+              placeholder={t("field.vocabulary.topic_placeholder")}
               options={topicOptions}
               value={topicFilter}
               onFilterChange={(value) => {

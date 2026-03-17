@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
 import { ArrowLeft, Loader2, Save } from "lucide-react";
 import { useForm, type Resolver, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -26,8 +25,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { EMPTY, MODES } from "@/constants/common";
 import { ROUTE_PATH } from "@/constants/routes";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
-import { TUpdateUserResponse } from "@/types/features/user";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { userDefaultValues } from "../../common";
 import { getUserSchema, type UserFormValues } from "../../schemas";
@@ -88,17 +86,12 @@ export function EditUserView({ id }: EditUserViewProps) {
         },
       },
       {
-        onSuccess: (data: TUpdateUserResponse) => {
+        onSuccess: (data) => {
           toast.success(data.message || t("common.toast.update_success"));
           router.push(ROUTE_PATH.admin.users);
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.update_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.update_error")),
       },
     );
   };
@@ -150,19 +143,21 @@ export function EditUserView({ id }: EditUserViewProps) {
                 <ArrowLeft className="h-4 w-4" />
               </Button>
               <BreadcrumbLink asChild>
-                <Link href={ROUTE_PATH.admin.users}>{t("user.users")}</Link>
+                <Link href={ROUTE_PATH.admin.users}>
+                  {t("feature.user.users")}
+                </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{t("user.edit_user")}</BreadcrumbPage>
+              <BreadcrumbPage>{t("feature.user.edit_user")}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight">
-            {t("user.edit_user")}
+            {t("feature.user.edit_user")}
           </h1>
           <div className="flex gap-2">
             <Button

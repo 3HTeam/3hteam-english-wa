@@ -93,18 +93,18 @@ export function VocabularyForm({
     { title: string; breadcrumb: string; submitLabel: string }
   > = {
     add: {
-      title: t("vocabulary.add_new_vocabulary"),
-      breadcrumb: t("vocabulary.add_new_vocabulary"),
+      title: t("feature.vocabulary.add_new_vocabulary"),
+      breadcrumb: t("feature.vocabulary.add_new_vocabulary"),
       submitLabel: t("common.actions.save"),
     },
     view: {
-      title: t("vocabulary.vocabulary_details"),
-      breadcrumb: t("vocabulary.vocabulary_details"),
+      title: t("feature.vocabulary.vocabulary_details"),
+      breadcrumb: t("feature.vocabulary.vocabulary_details"),
       submitLabel: EMPTY.str,
     },
     edit: {
-      title: t("vocabulary.edit_vocabulary"),
-      breadcrumb: t("vocabulary.edit_vocabulary"),
+      title: t("feature.vocabulary.edit_vocabulary"),
+      breadcrumb: t("feature.vocabulary.edit_vocabulary"),
       submitLabel: t("common.actions.update"),
     },
   };
@@ -230,7 +230,6 @@ export function VocabularyForm({
 
   return (
     <div className="space-y-6 pb-10">
-      {/* Breadcrumb & Header */}
       <div className="flex flex-col gap-4">
         <Breadcrumb>
           <BreadcrumbList>
@@ -245,7 +244,7 @@ export function VocabularyForm({
               </Button>
               <BreadcrumbLink asChild>
                 <Link href={ROUTE_PATH.admin.vocabularies}>
-                  {t("vocabulary.vocabularies")}
+                  {t("feature.vocabulary.vocabularies")}
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -312,7 +311,7 @@ export function VocabularyForm({
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Book className="h-5 w-5 text-primary" />
-                {t("vocabulary.sections.basic_info")}
+                {t("feature.vocabulary.sections.basic_info")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -323,11 +322,11 @@ export function VocabularyForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        {t("field.word")} {t("common.form.required")}
+                        {t("field.vocabulary.word")} {t("common.form.required")}
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder={t("field.word_placeholder")}
+                          placeholder={t("field.vocabulary.word_placeholder")}
                           disabled={isReadOnly}
                           {...field}
                         />
@@ -343,11 +342,14 @@ export function VocabularyForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        {t("field.phonetic")} {t("common.form.required")}
+                        {t("field.vocabulary.phonetic")}{" "}
+                        {t("common.form.required")}
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder={t("field.phonetic_placeholder")}
+                          placeholder={t(
+                            "field.vocabulary.phonetic_placeholder",
+                          )}
                           disabled={isReadOnly}
                           {...field}
                         />
@@ -365,11 +367,14 @@ export function VocabularyForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        {t("field.translation")} {t("common.form.required")}
+                        {t("field.vocabulary.translation")}{" "}
+                        {t("common.form.required")}
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder={t("field.translation_placeholder")}
+                          placeholder={t(
+                            "field.vocabulary.translation_placeholder",
+                          )}
                           disabled={isReadOnly}
                           {...field}
                         />
@@ -385,7 +390,8 @@ export function VocabularyForm({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        {t("field.topic")} {t("common.form.required")}
+                        {t("field.vocabulary.topic")}{" "}
+                        {t("common.form.required")}
                       </FormLabel>
                       <Select
                         onValueChange={field.onChange}
@@ -395,7 +401,9 @@ export function VocabularyForm({
                         <FormControl>
                           <SelectTrigger className="w-[50%]">
                             <SelectValue
-                              placeholder={t("field.topic_placeholder")}
+                              placeholder={t(
+                                "field.vocabulary.topic_placeholder",
+                              )}
                             />
                           </SelectTrigger>
                         </FormControl>
@@ -419,7 +427,7 @@ export function VocabularyForm({
                 render={({ field }) => (
                   <FormItem className="flex items-center justify-between rounded-lg border p-3 shadow-sm">
                     <div className="space-y-0.5">
-                      <FormLabel>{t("field.status")}</FormLabel>
+                      <FormLabel>{t("field.common.status")}</FormLabel>
                       <p className="text-sm text-muted-foreground">
                         {field.value
                           ? t("common.status.active")
@@ -444,7 +452,7 @@ export function VocabularyForm({
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Volume2 className="h-5 w-5 text-primary" />
-                  {t("vocabulary.sections.audio")}
+                  {t("feature.vocabulary.sections.audio")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -457,7 +465,7 @@ export function VocabularyForm({
                         <span className="text-xs font-bold bg-muted px-1.5 py-0.5 rounded">
                           US
                         </span>
-                        {t("vocabulary.audio.audio_us")}
+                        {t("feature.vocabulary.audio.audio_us")}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -481,7 +489,7 @@ export function VocabularyForm({
                         <span className="text-xs font-bold bg-muted px-1.5 py-0.5 rounded">
                           UK
                         </span>
-                        {t("vocabulary.audio.audio_uk")}
+                        {t("feature.vocabulary.audio.audio_uk")}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -505,7 +513,7 @@ export function VocabularyForm({
                         <span className="text-xs font-bold bg-muted px-1.5 py-0.5 rounded">
                           AU
                         </span>
-                        {t("vocabulary.audio.audio_au")}
+                        {t("feature.vocabulary.audio.audio_au")}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -526,7 +534,7 @@ export function VocabularyForm({
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <ImageIcon className="h-5 w-5 text-primary" />
-                  {t("vocabulary.sections.image")}
+                  {t("feature.vocabulary.sections.image")}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -584,7 +592,7 @@ export function VocabularyForm({
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold flex items-center gap-2">
                 <Languages className="h-5 w-5 text-primary" />
-                {t("vocabulary.sections.meanings")}
+                {t("feature.vocabulary.sections.meanings")}
               </h3>
               {!isReadOnly && (
                 <Button
@@ -595,7 +603,7 @@ export function VocabularyForm({
                   className="cursor-pointer"
                 >
                   <Plus className="h-4 w-4 mr-1" />
-                  {t("vocabulary.meaning.add")}
+                  {t("feature.vocabulary.meaning.add")}
                 </Button>
               )}
             </div>

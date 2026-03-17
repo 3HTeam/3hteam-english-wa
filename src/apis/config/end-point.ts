@@ -59,3 +59,7 @@ export const POPUP_ENDPOINTS = {
 export const BANNER_ENDPOINTS = {
   base: "admin/banners",
 } as const;
+
+export const EXERCISE_ENDPOINTS = {
+  base: "admin/exercises",
+} as const;

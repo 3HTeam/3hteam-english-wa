@@ -59,11 +59,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.full_name")}
+        title={options.t("column.user.full_name")}
       />
     ),
     meta: {
-      name: options.t("field.full_name"),
+      name: options.t("column.user.full_name"),
     },
     cell: ({ row }) => {
       const user = row.original;
@@ -83,10 +83,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.email,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.email")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.user.email")}
+      />
     ),
     meta: {
-      name: options.t("field.email"),
+      name: options.t("column.user.email"),
     },
     cell: ({ row }) => {
       return (
@@ -101,18 +104,21 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.role,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.role")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.user.role")}
+      />
     ),
     meta: {
-      name: options.t("field.role"),
+      name: options.t("column.user.role"),
     },
     cell: ({ row }) => {
       const role = row.getValue("role") as string;
       return (
         <Badge variant={role === "ADMIN" ? "default" : "secondary"}>
           {role === "ADMIN"
-            ? options.t("user.role.admin")
-            : options.t("user.role.user")}
+            ? options.t("feature.user.role.admin")
+            : options.t("feature.user.role.user")}
         </Badge>
       );
     },
@@ -125,11 +131,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.email_verified")}
+        title={options.t("column.user.email_verified")}
       />
     ),
     meta: {
-      name: options.t("field.email_verified"),
+      name: options.t("column.user.email_verified"),
     },
     cell: ({ row }) => {
       const verified = row.getValue("emailVerified");
@@ -147,11 +153,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.daily_goal")}
+        title={options.t("column.user.daily_goal")}
       />
     ),
     meta: {
-      name: options.t("field.daily_goal"),
+      name: options.t("column.user.daily_goal"),
     },
     cell: ({ row }) => {
       return (
@@ -166,11 +172,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.streak")}
+        title={options.t("column.user.streak")}
       />
     ),
     meta: {
-      name: options.t("field.streak"),
+      name: options.t("column.user.streak"),
     },
     cell: ({ row }) => {
       return (
@@ -185,11 +191,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.created_at")}
+        title={options.t("column.common.created_at")}
       />
     ),
     meta: {
-      name: options.t("field.created_at"),
+      name: options.t("column.common.created_at"),
     },
     cell: ({ row }) => {
       return (

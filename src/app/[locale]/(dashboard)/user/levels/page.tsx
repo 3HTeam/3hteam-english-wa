@@ -9,7 +9,7 @@ export default function LevelPage() {
   return (
     <>
       {/* Mobile view placeholder - shows message instead of images */}
-      <MobileViewPlaceholder title={t("level.levels")} />
+      <MobileViewPlaceholder title={t("feature.level.levels")} />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

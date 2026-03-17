@@ -7,16 +7,9 @@ import { useForm, type Resolver } from "react-hook-form";
 
 import { useGetLevelByIdQuery } from "@/apis/hooks";
 import { DialogError } from "@/components/shared/dialog";
+import { ModalCustom } from "@/components/shared/modal-custom";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Form } from "@/components/ui/form";
-import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { EMPTY, MODES } from "@/constants/common";
 import { useTranslations } from "@/hooks";
 
@@ -55,11 +48,15 @@ export function ViewLevelModal({
     if (levelData?.data?.level && controlledOpen) {
       const level = levelData.data.level;
       reset({
-        code: level.code,
-        name: level.name,
-        description: level.description || EMPTY.str,
-        order: level.order,
-        status: level.status,
+        cefrLevel: level.cefrLevel ?? EMPTY.str,
+        name: level.name ?? EMPTY.str,
+        description: level.description ?? EMPTY.str,
+        order: level.order ?? 0,
+        status: level.status ?? true,
+        ieltsMin: level.ieltsMin ?? 0,
+        ieltsMax: level.ieltsMax ?? 0,
+        toeicScoreMin: level.toeicScoreMin ?? 0,
+        toeicScoreMax: level.toeicScoreMax ?? 0,
       });
     }
   }, [levelData, controlledOpen, reset]);
@@ -80,43 +77,39 @@ export function ViewLevelModal({
       <DialogError
         open={controlledOpen}
         onOpenChange={onOpenChange}
-        title={t("level.level_details")}
+        title={t("feature.level.level_details")}
         onClose={handleClose}
       />
     );
   }
 
+  const footer = (
+    <div className="flex justify-end">
+      <Button
+        type="button"
+        variant="outline"
+        onClick={handleClose}
+        className="cursor-pointer"
+      >
+        {t("common.actions.close")}
+      </Button>
+    </div>
+  );
+
   return (
-    <Dialog open={controlledOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="data-[state=open]:!zoom-in-0 data-[state=open]:duration-600 sm:max-w-[650px] max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{t("level.level_details")}</DialogTitle>
-          <DialogDescription>{t("level.level_details_desc")}</DialogDescription>
-        </DialogHeader>
-
-        {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <Form {...form}>
-            <form className="space-y-6">
-              <LevelForm form={form} mode={MODES.view} />
-
-              <div className="flex justify-end pt-4">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleClose}
-                  className="cursor-pointer"
-                >
-                  {t("common.actions.close")}
-                </Button>
-              </div>
-            </form>
-          </Form>
-        )}
-      </DialogContent>
-    </Dialog>
+    <ModalCustom
+      open={controlledOpen ?? false}
+      onOpenChange={onOpenChange ?? (() => {})}
+      title={t("feature.level.level_details")}
+      description={t("feature.level.level_details_desc")}
+      footer={footer}
+      isLoading={isLoading}
+    >
+      <Form {...form}>
+        <form className="space-y-6">
+          <LevelForm form={form} mode={MODES.view} />
+        </form>
+      </Form>
+    </ModalCustom>
   );
 }

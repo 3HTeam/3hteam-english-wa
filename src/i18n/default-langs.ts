@@ -64,6 +64,10 @@ export const defaultMessages = {
       title: "Banner - {name}",
       desc: "Quản lý banner.",
     },
+    exercise: {
+      title: "Bài tập - {name}",
+      desc: "Quản lý bài tập.",
+    },
   },
 
   auth: {
@@ -177,196 +181,249 @@ export const defaultMessages = {
     app_config: "Cấu hình ứng dụng",
   },
 
+  column: {
+    common: {
+      action: "Hành động",
+      status: "Trạng thái",
+      image: "Ảnh",
+      description: "Mô tả",
+      order: "Thứ tự",
+      created_at: "Ngày tạo",
+      updated_at: "Ngày cập nhật",
+    },
+    user: {
+      email: "Email",
+      full_name: "Họ và tên",
+      role: "Vai trò",
+      phone: "Số điện thoại",
+      avatar: "Ảnh đại diện",
+      daily_goal: "Mục tiêu hàng ngày",
+      streak: "Streak",
+      email_verified: "Xác thực email",
+      level: "Cấp độ",
+    },
+    exercise: {
+      question: "Câu hỏi",
+      type: "Loại bài tập",
+      category: "Phân loại",
+      level: "Cấp độ",
+      score: "Điểm",
+      tags: "Nhãn",
+      options: "Lựa chọn",
+    },
+    topic: {
+      name: "Tên chủ đề",
+      slug: "Slug",
+      image: "Ảnh",
+    },
+    level: {
+      name: "Tên cấp độ",
+      cefr_level: "CEFR",
+      order: "Thứ tự",
+    },
+    grammar_category: {
+      name: "Danh mục ngữ pháp",
+      slug: "Slug",
+    },
+    grammar_topic: {
+      title: "Tiêu đề",
+      slug: "Slug",
+      difficulty: "Độ khó",
+      level: "Cấp độ",
+      category: "Danh mục ngữ pháp",
+    },
+    vocabulary: {
+      word: "Từ",
+      translation: "Bản dịch",
+      phonetic: "Phiên âm",
+      part_of_speech: "Từ loại",
+      audio: "Âm thanh",
+    },
+    module: {
+      name: "Tên chức năng",
+    },
+    banner: {
+      title: "Tiêu đề",
+      module: "Chức năng",
+    },
+    popup: {
+      title: "Tiêu đề",
+      module: "Chức năng",
+    },
+    onboarding: {
+      title: "Tiêu đề",
+    },
+  },
+
   field: {
-    email: "Email",
-    email_placeholder: "johndoe@gmail.com",
-    email_required: "Email bắt buộc!",
-    email_invalid: "Địa chỉ email không hợp lệ!",
+    common: {
+      status: "Trạng thái",
+      image: "Ảnh",
+      description: "Mô tả",
+      description_placeholder: "Nhập mô tả...",
+      order: "Thứ tự",
+      order_placeholder: "Nhập thứ tự...",
+      created_at: "Ngày tạo",
+      updated_at: "Ngày cập nhật",
+    },
+    auth: {
+      email: "Email",
+      email_placeholder: "johndoe@gmail.com",
+      password: "Mật khẩu",
+      password_placeholder: "********",
+      confirm_password: "Xác nhận mật khẩu",
+      full_name: "Họ và tên",
+      full_name_placeholder: "John Doe",
+      otp_code: "Mã OTP",
+      code_placeholder: "Nhập mã...",
+      code_required: "Mã bắt buộc!",
+      agree_terms: "Bạn phải đồng ý với điều khoản và chính sách bảo mật!",
+    },
+    level: {
+      level_name: "Tên cấp độ",
+      level_name_placeholder: "Nhập tên cấp độ...",
+      cefr_level: "CEFR",
+      cefr_level_placeholder: "Chọn cấp độ CEFR",
+      level: "Cấp độ",
+      level_placeholder: "Chọn cấp độ",
+      target_level: "Cấp độ mục tiêu",
+      target_level_placeholder: "Chọn cấp độ mục tiêu",
+      ielts_min: "IELTS tối thiểu",
+      ielts_min_placeholder: "Nhập IELTS tối thiểu",
+      ielts_max: "IELTS tối đa",
+      ielts_max_placeholder: "Nhập IELTS tối đa",
+      toeic_min: "TOEIC tối thiểu",
+      toeic_min_placeholder: "Nhập TOEIC tối thiểu",
+      toeic_max: "TOEIC tối đa",
+      toeic_max_placeholder: "Nhập TOEIC tối đa",
+    },
+    topic: {
+      topic_name: "Tên chủ đề",
+      topic_name_placeholder: "Nhập tên chủ đề...",
+      topic: "Chủ đề",
+      topic_placeholder: "Chọn chủ đề",
+      slug: "Slug",
+      slug_placeholder: "slug-tu-dong-tao",
+    },
+    vocabulary: {
+      word: "Từ",
+      word_placeholder: "Nhập từ...",
+      translation: "Bản dịch",
+      translation_placeholder: "Nhập bản dịch...",
+      phonetic: "Phiên âm",
+      phonetic_placeholder: "/ˈeksəmpl/",
+      topic: "Chủ đề",
+      topic_placeholder: "Chọn chủ đề",
+      audio: "Âm thanh",
+      audio_placeholder: "https://...",
+      part_of_speech: "Từ loại",
+      part_of_speech_placeholder: "Chọn từ loại",
+      synonyms: "Từ đồng nghĩa",
+      synonyms_placeholder: "từ1, từ2...",
+      antonyms: "Từ trái nghĩa",
+      antonyms_placeholder: "từ1, từ2...",
+      definition: "Định nghĩa",
+      definition_placeholder: "Nhập định nghĩa...",
+      meaning: "Nghĩa",
+      example: "Ví dụ",
+      example_placeholder: "Câu ví dụ...",
+      example_translation: "Dịch ví dụ",
+      example_translation_placeholder: "Dịch ví dụ...",
+    },
+    user: {
+      phone: "Số điện thoại",
+      phone_placeholder: "0123456789",
+      role: "Vai trò",
+      role_placeholder: "Chọn vai trò",
+      daily_goal: "Mục tiêu hàng ngày",
+      daily_goal_placeholder: "10",
+      streak: "Streak",
+      streak_placeholder: "0",
+      email_verified: "Xác thực email",
+    },
+    grammar_category: {
+      grammar_category_name: "Tên danh mục ngữ pháp",
+      grammar_category_name_placeholder: "Nhập tên danh mục ngữ pháp...",
+      grammar_category: "Danh mục ngữ pháp",
+      grammar_category_placeholder: "Chọn danh mục ngữ pháp",
+      slug: "Slug",
+      slug_placeholder: "slug-tu-dong-tao",
+    },
+    grammar_topic: {
+      title: "Tiêu đề",
+      title_placeholder: "Nhập tiêu đề ...",
+      content: "Nội dung",
+      content_placeholder: "Nhập nội dung (hỗ trợ Markdown)...",
+      difficulty: "Độ khó",
+      difficulty_placeholder: "Chọn độ khó",
+      grammar_topic: "Chủ đề ngữ pháp",
+      grammar_topic_placeholder: "Chọn chủ đề ngữ pháp",
+      grammar_topic_title: "Tiêu đề chủ đề ngữ pháp",
+      grammar_topic_title_placeholder: "Nhập tiêu đề chủ đề ngữ pháp...",
+      slug: "Slug",
+      slug_placeholder: "slug-tu-dong-tao",
+    },
+    exercise: {
+      exercise_type: "Loại bài tập",
+      exercise_type_placeholder: "Chọn loại bài tập",
+      select_type: "Chọn loại bài tập",
+      select_category: "Chọn phân loại",
 
-    password: "Mật khẩu",
-    password_placeholder: "********",
-    confirm_password: "Xác nhận mật khẩu",
-    password_min: "Mật khẩu phải có ít nhất {min} ký tự!",
-    password_max: "Mật khẩu không được vượt quá {max} ký tự!",
-    password_mismatch: "Mật khẩu không khớp!",
+      question: "Câu hỏi",
+      question_placeholder: "Nhập câu hỏi...",
 
-    full_name: "Họ và tên",
-    full_name_placeholder: "John Doe",
-    full_name_required: "Họ và tên bắt buộc!",
+      content: "Nội dung",
+      content_placeholder: "Nhập nội dung (hỗ trợ Markdown)...",
 
-    otp_code: "Mã OTP",
-    otp_length: "Mã OTP phải có {length} ký tự!",
-    otp_digits: "OTP phải chứa chỉ số!",
+      answer: "Đáp án",
+      answer_placeholder: "Nhập đáp án...",
 
-    agree_terms: "Bạn phải đồng ý với điều khoản và chính sách bảo mật!",
+      options: "Lựa chọn",
+      option: "Lựa chọn",
+      option_content_placeholder: "Nhập nội dung lựa chọn...",
+      is_correct: "Đáp án đúng",
+      match_with: "Nối với",
+      match_with_placeholder: "Khớp với (nếu có)",
 
-    code: "Mã",
-    code_placeholder: "Nhập mã...",
-    code_required: "Mã bắt buộc!",
+      media_type: "Loại Media",
+      select_media_type: "Chọn loại Media",
+      select_media_type_optional: "Chọn media (không bắt buộc)",
+      media_url: "URL Media",
+      media_url_placeholder: "https://... (.mp4, .jpg, .mp3)",
+      media_url_hint: "Chỉ nhập khi cần thiết, để trống nếu không có Media.",
+      transcript: "Bản Script",
+      transcript_placeholder: "Nhập script hoặc phân tích chi tiết...",
 
-    order: "Thứ tự",
-    order_placeholder: "Nhập thứ tự...",
-    order_required: "Thứ tự bắt buộc!",
+      tags: "Nhãn",
+      tags_placeholder: "Nhập text rồi nhấn Enter để thêm nhãn...",
+      tags_empty: "Chưa có nhãn nào được thêm.",
 
-    level_name: "Tên cấp độ",
-    level_name_placeholder: "Nhập tên cấp độ...",
-    level_name_required: "Tên cấp độ bắt buộc!",
+      category: "Phân loại",
+      category_placeholder: "Chọn phân loại",
 
-    level: "Cấp độ",
-    level_placeholder: "Chọn cấp độ",
+      explanation: "Giải thích",
+      explanation_placeholder: "Nhập giải thích...",
 
-    target_level: "Cấp độ mục tiêu",
-    target_level_placeholder: "Chọn cấp độ mục tiêu",
-
-    topic_name: "Tên chủ đề",
-    topic_name_placeholder: "Nhập tên chủ đề...",
-    topic_name_required: "Tên chủ đề bắt buộc!",
-
-    status: "Trạng thái",
-
-    image: "Ảnh",
-    image_required: "Ảnh bắt buộc!",
-    image_invalid: "URL ảnh không hợp lệ",
-
-    slug: "Slug",
-    slug_required: "Slug bắt buộc!",
-    slug_placeholder: "slug-tu-dong-tao",
-
-    description: "Mô tả",
-    description_placeholder: "Nhập mô tả...",
-
-    created_at: "Ngày tạo",
-
-    updated_at: "Ngày cập nhật",
-
-    word: "Từ",
-    word_placeholder: "Nhập từ...",
-    word_required: "Từ bắt buộc!",
-
-    translation: "Bản dịch",
-    translation_placeholder: "Nhập bản dịch...",
-    translation_required: "Bản dịch bắt buộc!",
-
-    phonetic: "Phiên âm",
-    phonetic_placeholder: "/ˈeksəmpl/",
-    phonetic_required: "Phiên âm bắt buộc!",
-
-    topic: "Chủ đề",
-    topic_placeholder: "Chọn chủ đề",
-    topic_required: "Chủ đề bắt buộc!",
-
-    audio: "Âm thanh",
-    audio_placeholder: "https://...",
-    audio_invalid: "URL âm thanh không hợp lệ",
-
-    part_of_speech: "Từ loại",
-    part_of_speech_placeholder: "Chọn từ loại",
-    part_of_speech_required: "Từ loại bắt buộc!",
-
-    synonyms: "Từ đồng nghĩa",
-    synonyms_placeholder: "từ1, từ2...",
-
-    antonyms: "Từ trái nghĩa",
-    antonyms_placeholder: "từ1, từ2...",
-
-    definition: "Định nghĩa",
-    definition_placeholder: "Nhập định nghĩa...",
-    definition_required: "Định nghĩa bắt buộc!",
-    definition_min: "Cần ít nhất {min} định nghĩa!",
-
-    meaning: "Nghĩa",
-    meaning_min: "Cần ít nhất {min} nghĩa!",
-
-    example: "Ví dụ",
-    example_placeholder: "Câu ví dụ...",
-    example_translation: "Dịch ví dụ",
-    example_translation_placeholder: "Dịch ví dụ...",
-
-    phone: "Số điện thoại",
-    phone_placeholder: "0123456789",
-
-    role: "Vai trò",
-    role_placeholder: "Chọn vai trò",
-
-    daily_goal: "Mục tiêu hàng ngày",
-    daily_goal_placeholder: "10",
-
-    streak: "Streak",
-    streak_placeholder: "0",
-
-    email_verified: "Xác thực email",
-
-    grammar_category_name: "Tên danh mục ngữ pháp",
-    grammar_category_name_placeholder: "Nhập tên danh mục ngữ pháp...",
-    grammar_category_name_required: "Tên danh mục ngữ pháp bắt buộc!",
-
-    grammar_category: "Danh mục ngữ pháp",
-    grammar_category_placeholder: "Chọn danh mục ngữ pháp",
-    grammar_category_required: "Danh mục ngữ pháp bắt buộc!",
-
-    title: "Tiêu đề",
-    title_placeholder: "Nhập tiêu đề ...",
-    title_required: "Tiêu đề bắt buộc!",
-
-    content: "Nội dung",
-    content_placeholder: "Nhập nội dung (hỗ trợ Markdown)...",
-    content_required: "Nội dung bắt buộc!",
-
-    difficulty: "Độ khó",
-    difficulty_placeholder: "Chọn độ khó",
-    difficulty_required: "Độ khó bắt buộc!",
-
-    level_required: "Cấp độ bắt buộc!",
-
-    grammar_topic: "Chủ đề ngữ pháp",
-    grammar_topic_placeholder: "Chọn chủ đề ngữ pháp",
-    grammar_topic_required: "Chủ đề ngữ pháp bắt buộc!",
-
-    grammar_topic_title: "Tiêu đề chủ đề ngữ pháp",
-    grammar_topic_title_placeholder: "Nhập tiêu đề chủ đề ngữ pháp...",
-    grammar_topic_title_required: "Tiêu đề chủ đề ngữ pháp bắt buộc!",
-
-    exercise_type: "Loại bài tập",
-    exercise_type_placeholder: "Chọn loại bài tập",
-    exercise_type_required: "Loại bài tập bắt buộc!",
-
-    question: "Câu hỏi",
-    question_placeholder: "Nhập câu hỏi...",
-    question_required: "Câu hỏi bắt buộc!",
-
-    answer: "Đáp án",
-    answer_placeholder: "Nhập đáp án...",
-    answer_required: "Đáp án bắt buộc!",
-
-    options: "Lựa chọn",
-    options_required: "Cần ít nhất một lựa chọn!",
-    option: "Lựa chọn",
-
-    explanation: "Giải thích",
-    explanation_placeholder: "Nhập giải thích...",
-    explanation_required: "Giải thích bắt buộc!",
-
-    score: "Điểm",
-    score_placeholder: "Nhập điểm...",
-    score_required: "Điểm bắt buộc!",
-    module_name: "Tên chức năng",
-    module_name_required: "Tên chức năng bắt buộc!",
-
-    onboarding_title: "Tiêu đề",
-    onboarding_title_placeholder: "Nhập tiêu đề...",
-    onboarding_title_required: "Tiêu đề bắt buộc!",
-
-    popup_title: "Tiêu đề",
-    popup_title_placeholder: "Nhập tiêu đề...",
-    popup_title_required: "Tiêu đề bắt buộc!",
-
-    module: "Chức năng",
-    module_placeholder: "Chọn chức năng",
-    module_required: "Chức năng bắt buộc!",
-
-    banner_title: "Tiêu đề",
-    banner_title_placeholder: "Nhập tiêu đề...",
-    banner_title_required: "Tiêu đề bắt buộc!",
+      score: "Điểm",
+      score_placeholder: "Nhập điểm...",
+    },
+    module: {
+      module: "Chức năng",
+      module_placeholder: "Chọn chức năng",
+      module_name: "Tên chức năng",
+    },
+    onboarding: {
+      onboarding_title: "Tiêu đề",
+      onboarding_title_placeholder: "Nhập tiêu đề...",
+    },
+    popup: {
+      popup_title: "Tiêu đề",
+      popup_title_placeholder: "Nhập tiêu đề...",
+    },
+    banner: {
+      banner_title: "Tiêu đề",
+      banner_title_placeholder: "Nhập tiêu đề...",
+    },
   },
 
   common: {
@@ -386,13 +443,6 @@ export const defaultMessages = {
       beginner: "Cơ bản",
       intermediate: "Trung cấp",
       advanced: "Nâng cao",
-    },
-
-    exercise_type: {
-      multiple_choice: "Trắc nghiệm",
-      fill_in_the_blank: "Điền vào chỗ trống",
-      true_false: "Đúng/Sai",
-      matching: "Nối",
     },
 
     toast: {
@@ -467,229 +517,338 @@ export const defaultMessages = {
     avatar: "Ảnh đại diện",
     email_verification_status: "Trạng thái xác thực email",
   },
-  setting: {
-    setting: "Cài đặt",
-    settings: "Cài đặt",
-    app_info: "Thông tin ứng dụng",
-    app_name: "Tên ứng dụng",
-    app_name_placeholder: "Nhập tên ứng dụng...",
-    app_description: "Mô tả ứng dụng",
-    app_description_placeholder: "Nhập mô tả ứng dụng...",
-    primary_color: "Màu chủ đạo",
-    logo: "Logo",
-    favicon: "Favicon",
-    contact_info: "Thông tin liên hệ",
-    address: "Địa chỉ",
-    address_placeholder: "Nhập địa chỉ...",
-    social_media: "Mạng xã hội",
-  },
-
-  billing: {
-    billing: "Thanh toán",
-    billings: "Thanh toán",
-  },
-  notification: {
-    notification: "Thông báo",
-    notifications: "Thông báo",
-  },
-
-  topic: {
-    topic: "Chủ đề",
-    topic_management: "Quản lý chủ đề",
-    topics: "Chủ đề",
-    search_placeholder: "Tìm kiếm chủ đề...",
-    add_new_topic: "Thêm chủ đề mới",
-    add_new_topic_desc: "Tạo chủ đề mới. Điền thông tin bên dưới.",
-    edit_topic: "Sửa chủ đề",
-    edit_topic_desc: "Chỉnh sửa thông tin chủ đề. Điền thông tin bên dưới.",
-    topic_details: "Chi tiết chủ đề",
-    topic_details_desc: "Xem thông tin chi tiết của chủ đề.",
-  },
-
-  vocabulary: {
-    vocabulary: "Từ vựng",
-    vocabulary_management: "Quản lý từ vựng",
-    vocabularies: "Từ vựng",
-    search_placeholder: "Tìm kiếm từ vựng...",
-    add_new_vocabulary: "Thêm từ vựng mới",
-    add_new_vocabulary_desc: "Nhập từ để tự động lấy thông tin.",
-    create_manually: "Tạo thủ công",
-    search_and_auto_fill: "Tìm kiếm & Tự động điền",
-    sections: {
-      basic_info: "Thông tin cơ bản",
-      audio: "Âm thanh",
-      image: "Hình ảnh",
-      meanings: "Nghĩa & Định nghĩa",
-    },
-    edit_vocabulary: "Sửa từ vựng",
-    vocabulary_details: "Chi tiết từ vựng",
-
-    enter_vocabulary_eg: "Nhập từ vựng (ví dụ: apple)...",
-    vocabulary_found_redirect: "Tìm thấy từ vựng! Đang chuyển hướng...",
-    vocabulary_not_found: "Không tìm thấy từ vựng",
-    no_data_for_this_vocabulary: "Không có dữ liệu cho từ vựng này",
-
-    audio: {
-      audio_us: "Âm thanh Mỹ",
-      audio_uk: "Âm thanh Anh",
-      audio_au: "Âm thanh Úc",
+  feature: {
+    setting: {
+      setting: "Cài đặt",
+      settings: "Cài đặt",
+      app_info: "Thông tin ứng dụng",
+      app_name: "Tên ứng dụng",
+      app_name_placeholder: "Nhập tên ứng dụng...",
+      app_description: "Mô tả ứng dụng",
+      app_description_placeholder: "Nhập mô tả ứng dụng...",
+      primary_color: "Màu chủ đạo",
+      logo: "Logo",
+      favicon: "Favicon",
+      contact_info: "Thông tin liên hệ",
+      address: "Địa chỉ",
+      address_placeholder: "Nhập địa chỉ...",
+      social_media: "Mạng xã hội",
     },
 
-    meaning: {
-      add: "Thêm nghĩa",
-      info: "Thông tin ngữ nghĩa",
+    billing: {
+      billing: "Thanh toán",
+      billings: "Thanh toán",
+    },
+    notification: {
+      notification: "Thông báo",
+      notifications: "Thông báo",
     },
 
-    definition: {
-      add: "Thêm định nghĩa",
-      list: "Danh sách định nghĩa",
+    topic: {
+      topic: "Chủ đề",
+      topic_management: "Quản lý chủ đề",
+      topics: "Chủ đề",
+      search_placeholder: "Tìm kiếm chủ đề...",
+      add_new_topic: "Thêm chủ đề mới",
+      add_new_topic_desc: "Tạo chủ đề mới. Điền thông tin bên dưới.",
+      edit_topic: "Sửa chủ đề",
+      edit_topic_desc: "Chỉnh sửa thông tin chủ đề. Điền thông tin bên dưới.",
+      topic_details: "Chi tiết chủ đề",
+      topic_details_desc: "Xem thông tin chi tiết của chủ đề.",
     },
-  },
 
-  grammar: {
-    grammar: "Ngữ pháp",
-    grammar_management: "Quản lý ngữ pháp",
-    grammars: "Ngữ pháp",
-  },
+    vocabulary: {
+      vocabulary: "Từ vựng",
+      vocabulary_management: "Quản lý từ vựng",
+      vocabularies: "Từ vựng",
+      search_placeholder: "Tìm kiếm từ vựng...",
+      add_new_vocabulary: "Thêm từ vựng mới",
+      add_new_vocabulary_desc: "Nhập từ để tự động lấy thông tin.",
+      create_manually: "Tạo thủ công",
+      search_and_auto_fill: "Tìm kiếm & Tự động điền",
+      sections: {
+        basic_info: "Thông tin cơ bản",
+        audio: "Âm thanh",
+        image: "Hình ảnh",
+        meanings: "Nghĩa & Định nghĩa",
+      },
+      edit_vocabulary: "Sửa từ vựng",
+      vocabulary_details: "Chi tiết từ vựng",
 
-  grammar_category: {
-    grammar_categories: "Danh mục ngữ pháp",
+      enter_vocabulary_eg: "Nhập từ vựng (ví dụ: apple)...",
+      vocabulary_found_redirect: "Tìm thấy từ vựng! Đang chuyển hướng...",
+      vocabulary_not_found: "Không tìm thấy từ vựng",
+      no_data_for_this_vocabulary: "Không có dữ liệu cho từ vựng này",
 
-    add_grammar_category: "Thêm danh mục ngữ pháp",
-    add_grammar_category_desc:
-      "Tạo danh mục ngữ pháp mới. Điền thông tin bên dưới.",
+      audio: {
+        audio_us: "Âm thanh Mỹ",
+        audio_uk: "Âm thanh Anh",
+        audio_au: "Âm thanh Úc",
+      },
 
-    edit_grammar_category: "Sửa danh mục ngữ pháp",
-    edit_grammar_category_desc:
-      "Chỉnh sửa thông tin danh mục ngữ pháp. Điền thông tin bên dưới.",
+      meaning: {
+        add: "Thêm nghĩa",
+        info: "Thông tin ngữ nghĩa",
+      },
 
-    grammar_category_details: "Chi tiết danh mục ngữ pháp",
-    grammar_category_details_desc:
-      "Xem thông tin chi tiết của danh mục ngữ pháp.",
+      definition: {
+        add: "Thêm định nghĩa",
+        list: "Danh sách định nghĩa",
+      },
+    },
 
-    search_placeholder: "Tìm kiếm danh mục ngữ pháp...",
-  },
+    grammar: {
+      grammar: "Ngữ pháp",
+      grammar_management: "Quản lý ngữ pháp",
+      grammars: "Ngữ pháp",
+    },
 
-  grammar_topic: {
-    grammar_topics: "Chủ đề ngữ pháp",
+    grammar_category: {
+      grammar_categories: "Danh mục ngữ pháp",
 
-    add_grammar_topic: "Thêm chủ đề ngữ pháp",
-    add_grammar_topic_desc: "Tạo chủ đề ngữ pháp mới. Điền thông tin bên dưới.",
+      add_grammar_category: "Thêm danh mục ngữ pháp",
+      add_grammar_category_desc:
+        "Tạo danh mục ngữ pháp mới. Điền thông tin bên dưới.",
 
-    edit_grammar_topic: "Sửa chủ đề ngữ pháp",
-    edit_grammar_topic_desc:
-      "Chỉnh sửa thông tin chủ đề ngữ pháp. Điền thông tin bên dưới.",
+      edit_grammar_category: "Sửa danh mục ngữ pháp",
+      edit_grammar_category_desc:
+        "Chỉnh sửa thông tin danh mục ngữ pháp. Điền thông tin bên dưới.",
 
-    grammar_topic_details: "Chi tiết chủ đề ngữ pháp",
-    grammar_topic_details_desc: "Xem thông tin chi tiết của chủ đề ngữ pháp.",
+      grammar_category_details: "Chi tiết danh mục ngữ pháp",
+      grammar_category_details_desc:
+        "Xem thông tin chi tiết của danh mục ngữ pháp.",
 
-    search_placeholder: "Tìm kiếm chủ đề ngữ pháp...",
-    name: "Chủ đề ngữ pháp",
-  },
+      search_placeholder: "Tìm kiếm danh mục ngữ pháp...",
+    },
 
-  grammar_exercise: {
-    name: "Bài tập ngữ pháp",
-    grammar_exercise: "Bài tập ngữ pháp",
-    grammar_exercises: "Bài tập ngữ pháp",
-    grammar_exercise_management: "Quản lý bài tập ngữ pháp",
-    search_placeholder: "Tìm kiếm bài tập ngữ pháp...",
-    add_grammar_exercise: "Thêm bài tập ngữ pháp",
-    add_grammar_exercise_desc:
-      "Tạo bài tập ngữ pháp mới. Điền thông tin bên dưới.",
-    edit_grammar_exercise: "Sửa bài tập ngữ pháp",
-    edit_grammar_exercise_desc:
-      "Chỉnh sửa thông tin bài tập ngữ pháp. Điền thông tin bên dưới.",
-    grammar_exercise_details: "Chi tiết bài tập ngữ pháp",
-    grammar_exercise_details_desc:
-      "Xem thông tin chi tiết của bài tập ngữ pháp.",
-  },
+    grammar_topic: {
+      grammar_topics: "Chủ đề ngữ pháp",
 
-  lesson: {
-    lesson: "Bài học",
-    lesson_management: "Quản lý bài học",
-    lessons: "Bài học",
-  },
+      add_grammar_topic: "Thêm chủ đề ngữ pháp",
+      add_grammar_topic_desc:
+        "Tạo chủ đề ngữ pháp mới. Điền thông tin bên dưới.",
 
-  user: {
-    user: "Người dùng",
-    user_management: "Quản lý người dùng",
-    users: "Người dùng",
-    accounts: "Tài khoản",
-    search_placeholder: "Tìm kiếm người dùng...",
-    user_details: "Chi tiết người dùng",
-    user_details_desc: "Xem thông tin chi tiết của người dùng.",
-    edit_user: "Sửa người dùng",
-    edit_user_desc: "Chỉnh sửa thông tin người dùng.",
-    personal_info: "Thông tin cá nhân",
-    account_settings: "Cài đặt tài khoản",
-    role: {
-      admin: "Quản trị viên",
+      edit_grammar_topic: "Sửa chủ đề ngữ pháp",
+      edit_grammar_topic_desc:
+        "Chỉnh sửa thông tin chủ đề ngữ pháp. Điền thông tin bên dưới.",
+
+      grammar_topic_details: "Chi tiết chủ đề ngữ pháp",
+      grammar_topic_details_desc: "Xem thông tin chi tiết của chủ đề ngữ pháp.",
+
+      search_placeholder: "Tìm kiếm chủ đề ngữ pháp...",
+      name: "Chủ đề ngữ pháp",
+    },
+
+    user: {
       user: "Người dùng",
+      user_management: "Quản lý người dùng",
+      users: "Người dùng",
+      accounts: "Tài khoản",
+      search_placeholder: "Tìm kiếm người dùng...",
+      user_details: "Chi tiết người dùng",
+      user_details_desc: "Xem thông tin chi tiết của người dùng.",
+      edit_user: "Sửa người dùng",
+      edit_user_desc: "Chỉnh sửa thông tin người dùng.",
+      personal_info: "Thông tin cá nhân",
+      account_settings: "Cài đặt tài khoản",
+      role: {
+        admin: "Quản trị viên",
+        user: "Người dùng",
+      },
+      general_info: "Thông tin chung",
+      learning_progress: "Tiến độ học tập",
+      account_status: "Trạng thái tài khoản",
+      avatar: "Ảnh đại diện",
+      email_verification_status: "Trạng thái xác thực email",
     },
-    general_info: "Thông tin chung",
-    learning_progress: "Tiến độ học tập",
-    account_status: "Trạng thái tài khoản",
-    avatar: "Ảnh đại diện",
-    email_verification_status: "Trạng thái xác thực email",
+
+    level: {
+      level: "Cấp độ",
+      level_management: "Quản lý cấp độ",
+      levels: "Cấp độ",
+      search_placeholder: "Tìm kiếm cấp độ...",
+      add_new_level: "Thêm cấp độ mới",
+      add_new_level_desc: "Tạo cấp độ mới. Điền thông tin bên dưới.",
+      edit_level: "Sửa cấp độ",
+      edit_level_desc: "Chỉnh sửa thông tin cấp độ. Điền thông tin bên dưới.",
+      level_details: "Chi tiết cấp độ",
+      level_details_desc: "Xem thông tin chi tiết của cấp độ.",
+    },
+
+    module: {
+      module: "Chức năng",
+      modules: "Chức năng",
+      search_placeholder: "Tìm kiếm chức năng",
+      add_new_module: "Thêm chức năng mới",
+      add_new_module_desc: "Tạo chức năng mới. Điền thông tin bên dưới",
+      edit_module: "Sửa chức năng",
+      edit_module_desc:
+        "Chỉnh sửa thông tin chức năng. Điền thông tin bên dưới.",
+      module_details: "Chi tiết chức năng",
+      module_details_desc: "Xem thông tin chi tiết của chức năng.",
+    },
+    onboarding: {
+      onboarding: "Onboarding",
+      onboardings: "Onboarding",
+      search_placeholder: "Tìm kiếm onboarding...",
+      add_new_onboarding: "Thêm onboarding mới",
+      add_new_onboarding_desc: "Tạo onboarding mới. Điền thông tin bên dưới.",
+      edit_onboarding: "Sửa onboarding",
+      edit_onboarding_desc:
+        "Chỉnh sửa thông tin onboarding. Điền thông tin bên dưới.",
+      onboarding_details: "Chi tiết onboarding",
+      onboarding_details_desc: "Xem thông tin chi tiết của onboarding.",
+    },
+    popup: {
+      popup: "Popup",
+      popups: "Popup",
+      search_placeholder: "Tìm kiếm popup...",
+      add_new_popup: "Thêm popup mới",
+      add_new_popup_desc: "Tạo popup mới. Điền thông tin bên dưới.",
+      edit_popup: "Sửa popup",
+      edit_popup_desc: "Chỉnh sửa thông tin popup. Điền thông tin bên dưới.",
+      popup_details: "Chi tiết popup",
+      popup_details_desc: "Xem thông tin chi tiết của popup.",
+    },
+    banner: {
+      banner: "Banner",
+      banners: "Banner",
+      search_placeholder: "Tìm kiếm banner...",
+      add_new_banner: "Thêm banner mới",
+      add_new_banner_desc: "Tạo banner mới. Điền thông tin bên dưới.",
+      edit_banner: "Sửa banner",
+      edit_banner_desc: "Chỉnh sửa thông tin banner. Điền thông tin bên dưới.",
+      banner_details: "Chi tiết banner",
+      banner_details_desc: "Xem thông tin chi tiết của banner.",
+    },
+    exercise: {
+      exercise: "Bài tập",
+      exercises: "Bài tập",
+      exercise_management: "Ngân hàng câu hỏi",
+      search_placeholder: "Tìm kiếm bài tập...",
+      add_new_exercise: "Thêm bài tập mới",
+      edit_exercise: "Sửa bài tập",
+      exercise_details: "Chi tiết bài tập",
+      general_info: "Thông tin chung",
+      options_setup: "Thiết lập lựa chọn",
+      media_additional: "Đa phương tiện & Mở rộng",
+      type: {
+        multiple_choice: "Trắc nghiệm",
+        fill_blank: "Điền vào chỗ trống",
+        matching: "Nối từ",
+        true_false: "Đúng/Sai",
+        listening: "Luyện nghe",
+        ordering: "Sắp xếp",
+      },
+      category: {
+        grammar: "Ngữ pháp",
+        vocabulary: "Từ vựng",
+        reading: "Đọc hiểu",
+        listening: "Nghe hiểu",
+      },
+      sections: {
+        question: "Nội dung câu hỏi",
+        options: "Các lựa chọn đáp án",
+        media: "Tài nguyên nghe nhìn",
+        explanation: "Giải thích đáp án",
+        classification: "Phân loại & Cấp độ",
+        settings: "Thiết lập điểm & Trạng thái",
+        tags: "Gắn thẻ (Tags)",
+      },
+      option: {
+        add: "Thêm lựa chọn",
+      },
+      media_type: {
+        image: "Hình ảnh",
+        video: "Video",
+        audio: "Âm thanh",
+      },
+    },
   },
 
-  level: {
-    level: "Cấp độ",
-    level_management: "Quản lý cấp độ",
-    levels: "Cấp độ",
-    search_placeholder: "Tìm kiếm cấp độ...",
-    add_new_level: "Thêm cấp độ mới",
-    add_new_level_desc: "Tạo cấp độ mới. Điền thông tin bên dưới.",
-    edit_level: "Sửa cấp độ",
-    edit_level_desc: "Chỉnh sửa thông tin cấp độ. Điền thông tin bên dưới.",
-    level_details: "Chi tiết cấp độ",
-    level_details_desc: "Xem thông tin chi tiết của cấp độ.",
-  },
-
-  module: {
-    module: "Chức năng",
-    modules: "Chức năng",
-    search_placeholder: "Tìm kiếm chức năng",
-    add_new_module: "Thêm chức năng mới",
-    add_new_module_desc: "Tạo chức năng mới. Điền thông tin bên dưới",
-    edit_module: "Sửa chức năng",
-    edit_module_desc: "Chỉnh sửa thông tin chức năng. Điền thông tin bên dưới.",
-    module_details: "Chi tiết chức năng",
-    module_details_desc: "Xem thông tin chi tiết của chức năng.",
-  },
-  onboarding: {
-    onboarding: "Onboarding",
-    onboardings: "Onboarding",
-    search_placeholder: "Tìm kiếm onboarding...",
-    add_new_onboarding: "Thêm onboarding mới",
-    add_new_onboarding_desc: "Tạo onboarding mới. Điền thông tin bên dưới.",
-    edit_onboarding: "Sửa onboarding",
-    edit_onboarding_desc:
-      "Chỉnh sửa thông tin onboarding. Điền thông tin bên dưới.",
-    onboarding_details: "Chi tiết onboarding",
-    onboarding_details_desc: "Xem thông tin chi tiết của onboarding.",
-  },
-  popup: {
-    popup: "Popup",
-    popups: "Popup",
-    search_placeholder: "Tìm kiếm popup...",
-    add_new_popup: "Thêm popup mới",
-    add_new_popup_desc: "Tạo popup mới. Điền thông tin bên dưới.",
-    edit_popup: "Sửa popup",
-    edit_popup_desc: "Chỉnh sửa thông tin popup. Điền thông tin bên dưới.",
-    popup_details: "Chi tiết popup",
-    popup_details_desc: "Xem thông tin chi tiết của popup.",
-  },
-  banner: {
-    banner: "Banner",
-    banners: "Banner",
-    search_placeholder: "Tìm kiếm banner...",
-    add_new_banner: "Thêm banner mới",
-    add_new_banner_desc: "Tạo banner mới. Điền thông tin bên dưới.",
-    edit_banner: "Sửa banner",
-    edit_banner_desc: "Chỉnh sửa thông tin banner. Điền thông tin bên dưới.",
-    banner_details: "Chi tiết banner",
-    banner_details_desc: "Xem thông tin chi tiết của banner.",
+  schema: {
+    common: {
+      image_invalid: "URL ảnh không hợp lệ",
+      url_invalid: "URL không hợp lệ!",
+      invalid_color: "Mã màu không hợp lệ!",
+    },
+    auth: {
+      email_required: "Email bắt buộc!",
+      email_invalid: "Địa chỉ email không hợp lệ!",
+      password_required: "Mật khẩu bắt buộc",
+      password_min: "Mật khẩu phải có ít nhất {min} ký tự!",
+      password_max: "Mật khẩu không được vượt quá {max} ký tự!",
+      password_mismatch: "Mật khẩu không khớp!",
+      full_name_required: "Họ và tên bắt buộc!",
+      agree_terms: "Bạn phải đồng ý với điều khoản và chính sách bảo mật!",
+      otp_length: "Mã OTP phải có {length} ký tự!",
+      otp_digits: "OTP phải chứa chỉ số!",
+    },
+    module: {
+      name_required: "Tên chức năng bắt buộc!",
+    },
+    topic: {
+      name_required: "Tên chủ đề bắt buộc!",
+      slug_required: "Slug bắt buộc!",
+      image_required: "Ảnh bắt buộc!",
+    },
+    level: {
+      cefr_level_required: "Cấp độ CEFR bắt buộc!",
+      name_required: "Tên cấp độ bắt buộc!",
+    },
+    grammar_category: {
+      name_required: "Tên danh mục ngữ pháp bắt buộc!",
+      slug_required: "Slug bắt buộc!",
+      image_required: "Ảnh bắt buộc!",
+    },
+    grammar_topic: {
+      title_required: "Tiêu đề bắt buộc!",
+      slug_required: "Slug bắt buộc!",
+      image_required: "Ảnh bắt buộc!",
+      content_required: "Nội dung bắt buộc!",
+      difficulty_invalid: "Độ khó không hợp lệ!",
+      level_required: "Cấp độ bắt buộc!",
+      category_required: "Danh mục ngữ pháp bắt buộc!",
+    },
+    vocabulary: {
+      word_required: "Từ bắt buộc!",
+      translation_required: "Bản dịch bắt buộc!",
+      phonetic_required: "Phiên âm bắt buộc!",
+      audio_invalid: "URL âm thanh không hợp lệ",
+      topic_required: "Chủ đề bắt buộc!",
+      meaning_min: "Cần ít nhất {min} nghĩa!",
+      part_of_speech_required: "Từ loại bắt buộc!",
+      definition_required: "Định nghĩa bắt buộc!",
+      definition_min: "Cần ít nhất {min} định nghĩa!",
+    },
+    user: {
+      full_name_required: "Họ và tên bắt buộc!",
+      email_invalid: "Địa chỉ email không hợp lệ!",
+      role_invalid: "Vai trò không hợp lệ!",
+    },
+    setting: {
+      app_name_required: "Tên ứng dụng bắt buộc!",
+    },
+    banner: {
+      title_required: "Tiêu đề bắt buộc!",
+      module_required: "Chức năng bắt buộc!",
+    },
+    popup: {
+      title_required: "Tiêu đề bắt buộc!",
+      module_required: "Chức năng bắt buộc!",
+    },
+    onboarding: {
+      title_required: "Tiêu đề bắt buộc!",
+      image_invalid: "URL ảnh không hợp lệ",
+    },
+    exercise: {
+      question_required: "Câu hỏi bắt buộc!",
+      category_required: "Bạn chưa chọn phân loại bài tập!",
+      type_required: "Bạn chưa chọn loại bài tập!",
+      option_min: "Cần ít nhất {min} lựa chọn!",
+      level_required: "Cấp độ bắt buộc!",
+      content_required: "Nội dung bắt buộc!",
+    },
   },
 
   text_editor: {

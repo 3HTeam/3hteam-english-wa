@@ -14,7 +14,7 @@ export default function UserDetailPage() {
   return (
     <>
       {/* Mobile view placeholder */}
-      <MobileViewPlaceholder title={t("user.user_details")} />
+      <MobileViewPlaceholder title={t("feature.user.user_details")} />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

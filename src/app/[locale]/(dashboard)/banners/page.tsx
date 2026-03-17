@@ -9,7 +9,7 @@ export default function BannerPage() {
   return (
     <>
       {/* Mobile view placeholder - shows message instead of images */}
-      <MobileViewPlaceholder title={t("banner.banners")} />
+      <MobileViewPlaceholder title={t("feature.banner.banners")} />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

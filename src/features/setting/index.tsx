@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
 import { ArrowLeft, Loader2, Pencil, Save, Settings } from "lucide-react";
 import { useForm, type Resolver, type SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -25,8 +24,7 @@ import { Form } from "@/components/ui/form";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ROUTE_PATH } from "@/constants/routes";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
-import { TUpdateSettingResponse } from "@/types/features/setting";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { settingDefaultValues } from "./common";
 import { SettingForm } from "./components/setting-form";
@@ -94,16 +92,11 @@ export function SettingView() {
         tiktok: values.tiktok || "",
       },
       {
-        onSuccess: (data: TUpdateSettingResponse) => {
+        onSuccess: (data) => {
           toast.success(data.message || t("common.toast.update_success"));
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.update_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.update_error")),
       },
     );
   };
@@ -163,7 +156,7 @@ export function SettingView() {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{t("setting.settings")}</BreadcrumbPage>
+              <BreadcrumbPage>{t("feature.setting.settings")}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -171,7 +164,7 @@ export function SettingView() {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold tracking-tight flex items-center gap-2">
             <Settings className="h-6 w-6" />
-            {t("setting.settings")}
+            {t("feature.setting.settings")}
           </h1>
           <Button
             onClick={handleSubmit(onSubmit)}

@@ -2,8 +2,6 @@
 
 import React, { useMemo, useState } from "react";
 
-import { AxiosError } from "axios";
-import { ArrowLeft, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -14,15 +12,15 @@ import {
 } from "@/apis/hooks";
 import { DataTable } from "@/components/shared/data-table";
 import { DialogDelete } from "@/components/shared/dialog";
-import { Button } from "@/components/ui/button";
+import { ToolbarActions } from "@/components/shared/toolbar-actions";
 import { EMPTY } from "@/constants/common";
 import { useTranslations } from "@/hooks";
-import { ApiResponse } from "@/types/api";
 import {
   TDeleteTopicResponse,
   TForceDeleteTopicResponse,
   TRestoreTopicResponse,
 } from "@/types/features/topic";
+import { handleApiError } from "@/utils/api/handle-api-error";
 
 import { COLUMN_KEYS, createColumns, getStatuses } from "./common";
 import { AddTopicModal, EditTopicModal, ViewTopicModal } from "./components";
@@ -102,13 +100,8 @@ export function TopicView() {
       onSuccess: (data: TRestoreTopicResponse) => {
         toast.success(data?.message || t("common.toast.restore_success"));
       },
-      onError: (error: Error) => {
-        const axiosError = error as AxiosError<ApiResponse<void>>;
-        const message = axiosError.response?.data?.message;
-        const fallbackMessage =
-          axiosError.message || t("common.toast.restore_error");
-        toast.error(message || fallbackMessage);
-      },
+      onError: (error: Error) =>
+        handleApiError(error, t("common.toast.restore_error")),
     });
   };
 
@@ -135,13 +128,8 @@ export function TopicView() {
             data?.message || t("common.toast.force_delete_success"),
           );
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<ApiResponse<void>>;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.force_delete_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.force_delete_error")),
       });
     } else {
       deleteTopic(deleteModalState.topicId, {
@@ -153,15 +141,8 @@ export function TopicView() {
           });
           toast.success(data?.message || t("common.toast.delete_success"));
         },
-        onError: (error: Error) => {
-          const axiosError = error as AxiosError<
-            ApiResponse<TDeleteTopicResponse>
-          >;
-          const message = axiosError.response?.data?.message;
-          const fallbackMessage =
-            axiosError.message || t("common.toast.delete_error");
-          toast.error(message || fallbackMessage);
-        },
+        onError: (error: Error) =>
+          handleApiError(error, t("common.toast.delete_error")),
       });
     }
   };
@@ -225,37 +206,16 @@ export function TopicView() {
         data={topics?.data?.topics || []}
         columns={columns}
         addButton={
-          isTrashMode ? (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleToggleTrashMode}
-              className="cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              {t("common.actions.back")}
-            </Button>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Button
-                variant="destructive"
-                size="sm"
-                onClick={handleToggleTrashMode}
-                className="cursor-pointer"
-              >
-                <Trash2 className="w-4 h-4" />
-                <span className="hidden lg:inline ml-1">
-                  {t("common.trash.trash")}
-                </span>
-              </Button>
-              <AddTopicModal />
-            </div>
-          )
+          <ToolbarActions
+            isTrashMode={isTrashMode}
+            onToggleTrashMode={handleToggleTrashMode}
+            addButton={<AddTopicModal />}
+          />
         }
         toolbarProps={{
           placeholder: isTrashMode
             ? t("common.trash.search_placeholder")
-            : t("topic.search_placeholder"),
+            : t("feature.topic.search_placeholder"),
           searchColumn: COLUMN_KEYS.name,
           search,
           filters: isTrashMode
@@ -263,7 +223,7 @@ export function TopicView() {
             : [
                 {
                   columnId: "status",
-                  title: t("field.status"),
+                  title: t("field.common.status"),
                   options: statuses,
                 },
               ],

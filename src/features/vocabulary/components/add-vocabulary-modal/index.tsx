@@ -10,16 +10,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+import { ModalCustom } from "@/components/shared/modal-custom";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -45,7 +37,7 @@ export const AddVocabularyModal = () => {
   const formSchema = useMemo(
     () =>
       z.object({
-        word: z.string().min(1, t("field.word_required")),
+        word: z.string().min(1, t("schema.vocabulary.word_required")),
       }),
     [t],
   );
@@ -67,14 +59,14 @@ export const AddVocabularyModal = () => {
       ]);
 
       if (!dictionaryResponse.ok) {
-        throw new Error(t("vocabulary.vocabulary_not_found"));
+        throw new Error(t("feature.vocabulary.vocabulary_not_found"));
       }
 
       const data = await dictionaryResponse.json();
       const entry = data[0];
 
       if (!entry) {
-        throw new Error(t("vocabulary.no_data_for_this_vocabulary"));
+        throw new Error(t("feature.vocabulary.no_data_for_this_vocabulary"));
       }
 
       let imageUrl = EMPTY.str;
@@ -116,83 +108,88 @@ export const AddVocabularyModal = () => {
 
       useVocabularyStore.getState().setDraft(mappedData);
 
-      toast.success(t("vocabulary.vocabulary_found_redirect"));
+      toast.success(t("feature.vocabulary.vocabulary_found_redirect"));
       setOpen(false);
       router.push(`${ROUTE_PATH.admin.vocabularies}/${MODES.add}`);
     } catch (error) {
       toast.error(
         error instanceof Error
           ? error.message
-          : t("vocabulary.vocabulary_not_found"),
+          : t("feature.vocabulary.vocabulary_not_found"),
       );
     }
   };
 
+  const defaultTrigger = (
+    <Button className="gap-2 cursor-pointer">
+      <Plus className="h-4 w-4" />
+      {t("feature.vocabulary.add_new_vocabulary")}
+    </Button>
+  );
+
+  const footer = (
+    <div className="flex justify-end gap-2">
+      <Button
+        type="button"
+        variant="outline"
+        className="cursor-pointer"
+        onClick={() => {
+          setOpen(false);
+          router.push(`${ROUTE_PATH.admin.vocabularies}/add`);
+        }}
+      >
+        {t("feature.vocabulary.create_manually")}
+      </Button>
+      <Button
+        type="submit"
+        form="add-vocabulary-form"
+        disabled={isSubmitting}
+        className="cursor-pointer"
+      >
+        {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {t("feature.vocabulary.search_and_auto_fill")}
+      </Button>
+    </div>
+  );
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button className="gap-2 cursor-pointer">
-          <Plus className="h-4 w-4" />
-          {t("vocabulary.add_new_vocabulary")}
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px]">
-        <DialogHeader>
-          <DialogTitle>{t("vocabulary.add_new_vocabulary")}</DialogTitle>
-          <DialogDescription>
-            {t("vocabulary.add_new_vocabulary_desc")}
-          </DialogDescription>
-        </DialogHeader>
-
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="word"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("field.word")}</FormLabel>
-                  <FormControl>
-                    <div className="relative">
-                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        placeholder={t("vocabulary.enter_vocabulary_eg")}
-                        className="pl-9"
-                        {...field}
-                      />
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <DialogFooter className="gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                className="cursor-pointer"
-                onClick={() => {
-                  setOpen(false);
-                  router.push(`${ROUTE_PATH.admin.vocabularies}/add`);
-                }}
-              >
-                {t("vocabulary.create_manually")}
-              </Button>
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="cursor-pointer"
-              >
-                {isSubmitting && (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                )}
-                {t("vocabulary.search_and_auto_fill")}
-              </Button>
-            </DialogFooter>
-          </form>
-        </Form>
-      </DialogContent>
-    </Dialog>
+    <ModalCustom
+      open={open}
+      onOpenChange={setOpen}
+      title={t("feature.vocabulary.add_new_vocabulary")}
+      description={t("feature.vocabulary.add_new_vocabulary_desc")}
+      trigger={defaultTrigger}
+      footer={footer}
+      className="sm:max-w-[500px]"
+    >
+      <Form {...form}>
+        <form
+          id="add-vocabulary-form"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4"
+        >
+          <FormField
+            control={form.control}
+            name="word"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("field.vocabulary.word")}</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder={t("feature.vocabulary.enter_vocabulary_eg")}
+                      className="pl-9"
+                      {...field}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
+    </ModalCustom>
   );
 };

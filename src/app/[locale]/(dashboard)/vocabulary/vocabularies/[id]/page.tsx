@@ -14,7 +14,9 @@ export default function VocabularyDetailPage() {
   return (
     <>
       {/* Mobile view placeholder */}
-      <MobileViewPlaceholder title={t("vocabulary.vocabulary_details")} />
+      <MobileViewPlaceholder
+        title={t("feature.vocabulary.vocabulary_details")}
+      />
 
       {/* Desktop view */}
       <div className="hidden h-full flex-1 flex-col px-4 md:px-6 md:flex">

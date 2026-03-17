@@ -52,14 +52,18 @@ export function EditVocabularyView({ id }: EditVocabularyViewProps) {
       {
         onSuccess: () => {
           toast.success(
-            t("common.toast.update_success", { item: t("vocabulary.name") }),
+            t("common.toast.update_success", {
+              item: t("feature.vocabulary.vocabulary"),
+            }),
           );
           router.push(ROUTE_PATH.admin.vocabularies);
         },
         onError: (error: any) => {
           toast.error(
             error?.response?.data?.message ||
-              t("common.toast.update_error", { item: t("vocabulary.name") }),
+              t("common.toast.update_error", {
+                item: t("feature.vocabulary.vocabulary"),
+              }),
           );
         },
       },

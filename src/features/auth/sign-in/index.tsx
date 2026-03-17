@@ -5,7 +5,6 @@ import { useMemo, type ComponentProps } from "react";
 import Image from "next/image";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -29,6 +28,7 @@ import { useTranslations } from "@/hooks";
 import { Link, useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores";
 import { type ApiResponse } from "@/types/api";
+import { handleApiError } from "@/utils/api/handle-api-error";
 import { cn } from "@/utils/shadcn";
 
 import { AuthHeader, SocialAuth } from "../components";
@@ -60,12 +60,7 @@ export function SignIn({ className, ...props }: ComponentProps<"div">) {
         toast.success(data?.message || t("auth.signin.ok"));
         router.push(ROUTE_PATH.admin.vocabularyTopics);
       },
-      onError: (error) => {
-        const axiosError = error as AxiosError<ApiResponse>;
-        const message = axiosError.response?.data?.message;
-        const fallbackMessage = axiosError.message || t("auth.signin.err");
-        toast.error(message || fallbackMessage);
-      },
+      onError: (error: Error) => handleApiError(error, t("auth.signin.err")),
     });
   };
 
@@ -101,13 +96,13 @@ export function SignIn({ className, ...props }: ComponentProps<"div">) {
                       render={({ field }) => (
                         <FormItem className="grid gap-3">
                           <FormLabel htmlFor="email">
-                            {t("field.email")}
+                            {t("field.auth.email")}
                           </FormLabel>
                           <FormControl>
                             <Input
                               id="email"
                               type="email"
-                              placeholder={t("field.email_placeholder")}
+                              placeholder={t("field.auth.email_placeholder")}
                               autoComplete="email"
                               disabled={isPending}
                               {...field}
@@ -124,7 +119,7 @@ export function SignIn({ className, ...props }: ComponentProps<"div">) {
                         <FormItem className="grid gap-3">
                           <div className="flex items-center">
                             <FormLabel htmlFor="password">
-                              {t("field.password")}
+                              {t("field.auth.password")}
                             </FormLabel>
                             <Link
                               href={ROUTE_PATH.auth.forgotPassword}
@@ -137,7 +132,7 @@ export function SignIn({ className, ...props }: ComponentProps<"div">) {
                             <Input
                               id="password"
                               type="password"
-                              placeholder={t("field.password_placeholder")}
+                              placeholder={t("field.auth.password_placeholder")}
                               autoComplete="current-password"
                               disabled={isPending}
                               {...field}

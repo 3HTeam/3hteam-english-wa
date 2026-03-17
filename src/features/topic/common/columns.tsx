@@ -55,11 +55,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.topic_name")}
+        title={options.t("column.topic.name")}
       />
     ),
     meta: {
-      name: options.t("field.topic_name"),
+      name: options.t("column.topic.name"),
     },
     cell: ({ row }) => {
       return (
@@ -76,11 +76,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.status")}
+        title={options.t("column.common.status")}
       />
     ),
     meta: {
-      name: options.t("field.status"),
+      name: options.t("column.common.status"),
     },
     cell: ({ row }) => {
       const status = row.getValue("status");
@@ -102,10 +102,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.imageUrl,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.image")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.common.image")}
+      />
     ),
     meta: {
-      name: options.t("field.image"),
+      name: options.t("column.common.image"),
     },
     cell: ({ row }) => {
       const imageUrl = row.getValue(COLUMN_KEYS.imageUrl) as string;
@@ -123,10 +126,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.slug,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.slug")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.topic.slug")}
+      />
     ),
     meta: {
-      name: options.t("field.slug"),
+      name: options.t("column.topic.slug"),
     },
     cell: ({ row }) => {
       return (
@@ -141,11 +147,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.description")}
+        title={options.t("column.common.description")}
       />
     ),
     meta: {
-      name: options.t("field.description"),
+      name: options.t("column.common.description"),
     },
     cell: ({ row }) => {
       return (
@@ -162,11 +168,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.created_at")}
+        title={options.t("column.common.created_at")}
       />
     ),
     meta: {
-      name: options.t("field.created_at"),
+      name: options.t("column.common.created_at"),
     },
     cell: ({ row }) => {
       return (
@@ -183,11 +189,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.updated_at")}
+        title={options.t("column.common.updated_at")}
       />
     ),
     meta: {
-      name: options.t("field.updated_at"),
+      name: options.t("column.common.updated_at"),
     },
     cell: ({ row }) => {
       return (

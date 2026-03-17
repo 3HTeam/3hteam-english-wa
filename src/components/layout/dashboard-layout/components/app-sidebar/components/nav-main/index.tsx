@@ -43,9 +43,11 @@ export const NavMain = ({
   const pathname = usePathname();
 
   // Check if any subitem is active to determine if parent should be open
+  const isPathActive = (url: string) => pathname.endsWith(url);
+
   const shouldBeOpen = (item: (typeof items)[0]) => {
     if (item.isActive) return true;
-    return item.items?.some((subItem) => pathname === subItem.url) || false;
+    return item.items?.some((subItem) => isPathActive(subItem.url)) || false;
   };
 
   return (
@@ -79,7 +81,7 @@ export const NavMain = ({
                           <SidebarMenuSubButton
                             asChild
                             className="cursor-pointer"
-                            isActive={pathname === subItem.url}
+                            isActive={isPathActive(subItem.url)}
                           >
                             <Link
                               href={subItem.url}
@@ -103,7 +105,7 @@ export const NavMain = ({
                   asChild
                   tooltip={item.title}
                   className="cursor-pointer"
-                  isActive={pathname === item.url}
+                  isActive={isPathActive(item.url)}
                 >
                   <Link
                     href={item.url}

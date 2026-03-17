@@ -5,12 +5,12 @@ export const getSignInSchema = (t: (key: string, options?: any) => string) =>
     email: z
       .string()
       .trim()
-      .min(1, t("field.email_required"))
-      .email(t("field.email_invalid")),
+      .min(1, t("schema.auth.email_required"))
+      .email(t("schema.auth.email_invalid")),
     password: z
       .string()
-      .min(6, t("field.password_min", { min: 6 }))
-      .max(64, t("field.password_max", { max: 64 })),
+      .min(6, t("schema.auth.password_min", { min: 6 }))
+      .max(64, t("schema.auth.password_max", { max: 64 })),
   });
 
 export type SignInFormValues = z.infer<ReturnType<typeof getSignInSchema>>;

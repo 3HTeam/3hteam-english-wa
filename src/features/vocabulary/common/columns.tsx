@@ -91,10 +91,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.word,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.word")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.vocabulary.word")}
+      />
     ),
     meta: {
-      name: options.t("field.word"),
+      name: options.t("column.vocabulary.word"),
     },
     cell: ({ row }) => {
       return (
@@ -111,11 +114,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.translation")}
+        title={options.t("column.vocabulary.translation")}
       />
     ),
     meta: {
-      name: options.t("field.translation"),
+      name: options.t("column.vocabulary.translation"),
     },
     cell: ({ row }) => {
       return (
@@ -132,11 +135,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.phonetic")}
+        title={options.t("column.vocabulary.phonetic")}
       />
     ),
     meta: {
-      name: options.t("field.phonetic"),
+      name: options.t("column.vocabulary.phonetic"),
     },
     cell: ({ row }) => {
       return (
@@ -149,10 +152,13 @@ export const createColumns = (
   {
     id: COLUMN_KEYS.topic,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.topic")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.topic.name")}
+      />
     ),
     meta: {
-      name: options.t("field.topic"),
+      name: options.t("column.topic.name"),
     },
     cell: ({ row }) => {
       const topicName = (row.original as TVocabulary).topic?.name;
@@ -174,11 +180,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.status")}
+        title={options.t("column.common.status")}
       />
     ),
     meta: {
-      name: options.t("field.status"),
+      name: options.t("column.common.status"),
     },
     cell: ({ row }) => {
       const status = row.getValue(COLUMN_KEYS.status) as boolean;
@@ -195,10 +201,13 @@ export const createColumns = (
   {
     id: COLUMN_KEYS.audio,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.audio")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.vocabulary.audio")}
+      />
     ),
     meta: {
-      name: options.t("field.audio"),
+      name: options.t("column.vocabulary.audio"),
     },
     cell: ({ row }) => {
       const audioUrlUs = (row.original as TVocabulary).audioUrlUs;
@@ -226,11 +235,11 @@ export const createColumns = (
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title={options.t("field.part_of_speech")}
+        title={options.t("column.vocabulary.part_of_speech")}
       />
     ),
     meta: {
-      name: options.t("field.part_of_speech"),
+      name: options.t("column.vocabulary.part_of_speech"),
     },
     cell: ({ row }) => {
       const meanings = (row.original as TVocabulary).meanings || [];
@@ -256,10 +265,13 @@ export const createColumns = (
   {
     accessorKey: COLUMN_KEYS.imageUrl,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={options.t("field.image")} />
+      <DataTableColumnHeader
+        column={column}
+        title={options.t("column.common.image")}
+      />
     ),
     meta: {
-      name: options.t("field.image"),
+      name: options.t("column.common.image"),
     },
     cell: ({ row }) => {
       const imageUrl = row.getValue(COLUMN_KEYS.imageUrl) as string;

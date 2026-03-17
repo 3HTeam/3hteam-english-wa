@@ -4,14 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Icon } from "@iconify/react";
-import {
-  BookA,
-  LayoutDashboard,
-  LayoutDashboardIcon,
-  LayoutPanelLeft,
-  Settings,
-  Users,
-} from "lucide-react";
 import { get } from "radash";
 
 import { useProfileQuery } from "@/apis/hooks";
@@ -44,75 +36,83 @@ export const AppSidebar = ({
   };
 
   const navGroups = [
-    {
-      label: t("dashboard.dashboard"),
-      items: [
-        {
-          title: t("dashboard.dashboard"),
-          url: ROUTE_PATH.admin.dashboard,
-          icon: () => (
-            <Icon icon="tabler:layout-dashboard" className="size-4" />
-          ),
-        },
-        {
-          title: t("dashboard.dashboard2"),
-          url: ROUTE_PATH.admin.dashboard2,
-          icon: () => <Icon icon="tabler:table-dashed" className="size-4" />,
-        },
-      ],
-    },
+    // {
+    //   label: t("dashboard.dashboard"),
+    //   items: [
+    //     {
+    //       title: t("dashboard.dashboard"),
+    //       url: ROUTE_PATH.admin.dashboard,
+    //       icon: () => (
+    //         <Icon icon="tabler:layout-dashboard" className="size-4" />
+    //       ),
+    //     },
+    //     {
+    //       title: t("dashboard.dashboard2"),
+    //       url: ROUTE_PATH.admin.dashboard2,
+    //       icon: () => <Icon icon="tabler:table-dashed" className="size-4" />,
+    //     },
+    //   ],
+    // },
     {
       label: t("management.management"),
       items: [
         {
-          title: t("vocabulary.vocabulary_management"),
+          title: t("feature.vocabulary.vocabulary_management"),
           url: ROUTE_PATH.admin.vocabularies,
           icon: () => <Icon icon="tabler:vocabulary" className="size-4" />,
           isActive: true,
           items: [
             {
-              title: t("topic.topics"),
+              title: t("feature.topic.topics"),
               url: ROUTE_PATH.admin.vocabularyTopics,
             },
             {
-              title: t("vocabulary.vocabularies"),
+              title: t("feature.vocabulary.vocabularies"),
               url: ROUTE_PATH.admin.vocabularies,
             },
           ],
         },
         {
-          title: t("grammar.grammar_management"),
+          title: t("feature.grammar.grammar_management"),
           url: "#",
           icon: () => <Icon icon="tabler:text-grammar" className="size-4" />,
           isActive: true,
           items: [
             {
-              title: t("grammar_category.grammar_categories"),
+              title: t("feature.grammar_category.grammar_categories"),
               url: ROUTE_PATH.admin.grammarCategories,
             },
             {
-              title: t("grammar_topic.grammar_topics"),
+              title: t("feature.grammar_topic.grammar_topics"),
               url: ROUTE_PATH.admin.grammarTopics,
-            },
-            {
-              title: t("grammar_exercise.grammar_exercises"),
-              url: ROUTE_PATH.admin.grammarExercises,
             },
           ],
         },
         {
-          title: t("user.user_management"),
+          title: t("feature.user.user_management"),
           url: "#",
-          icon: () => <Icon icon="tdesign:usergroup" className="size-4" />,
+          icon: () => <Icon icon="uil:user" className="size-4" />,
           isActive: true,
           items: [
             {
-              title: t("user.users"),
+              title: t("feature.user.users"),
               url: ROUTE_PATH.admin.users,
             },
             {
-              title: t("level.levels"),
+              title: t("feature.level.levels"),
               url: ROUTE_PATH.admin.userLevels,
+            },
+          ],
+        },
+        {
+          title: t("feature.exercise.exercise_management"),
+          url: "#",
+          icon: () => <Icon icon="ph:exam-bold" className="size-4" />,
+          isActive: true,
+          items: [
+            {
+              title: t("feature.exercise.exercises"),
+              url: ROUTE_PATH.admin.exercises,
             },
           ],
         },
@@ -122,29 +122,36 @@ export const AppSidebar = ({
       label: t("config.app_config"),
       items: [
         {
-          title: t("setting.settings"),
+          title: t("feature.setting.settings"),
           url: ROUTE_PATH.admin.settings,
           icon: () => <Icon icon="tdesign:setting-1" className="size-4" />,
         },
         {
-          title: t("module.modules"),
+          title: t("feature.module.modules"),
           url: ROUTE_PATH.admin.modules,
-          icon: () => <Icon icon="octicon:container-24" className="size-4" />,
+          icon: () => (
+            <Icon
+              icon="fluent:slide-text-sparkle-16-regular"
+              className="size-4"
+            />
+          ),
         },
         {
-          title: t("onboarding.onboardings"),
+          title: t("feature.onboarding.onboardings"),
           url: ROUTE_PATH.admin.onboardings,
-          icon: () => <Icon icon="fluent-mdl2:onboarding" className="size-4" />,
+          icon: () => (
+            <Icon icon="icon-park-outline:slide-two" className="size-4" />
+          ),
         },
         {
-          title: t("popup.popups"),
+          title: t("feature.popup.popups"),
           url: ROUTE_PATH.admin.popups,
-          icon: () => <Icon icon="vaadin:modal-list" className="size-4" />,
+          icon: () => <Icon icon="ci:slider-02" className="size-4" />,
         },
         {
-          title: t("banner.banners"),
+          title: t("feature.banner.banners"),
           url: ROUTE_PATH.admin.banners,
-          icon: () => <Icon icon="ph:flag-banner-fold" className="size-4" />,
+          icon: () => <Icon icon="ic:baseline-slideshow" className="size-4" />,
         },
       ],
     },
